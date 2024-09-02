@@ -1,0 +1,120 @@
+@media (min-width: 979px) {
+    #menu_search .menu_search__item.--input {
+        display: flex;
+    }
+    #menu_search .menu_search__submit {
+        position: relative;
+    }
+    #menu_search .menu_search__submit {
+        min-width: 45px;
+        border: 1px solid @less_iaicolorscheme_background_mask_border_color;
+    }
+}
+
+	select.category_node {
+	  display: none;
+	}
+	
+	
+	#search-categories {
+	  
+	  border: 1px solid @less_iaicolorscheme_background_mask_border_color;
+    border-left: none;
+    border-right: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 170px;
+    
+    @media (max-width: 978px) {
+      display: none;
+    }
+	}
+	
+	.menu_search.--focus {
+	  #search-categories {
+  	  border: none;
+  	}
+  	.menu_search__submit {
+  	  border: none !important;
+  	}
+	}
+	
+	.search-categories-title {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    cursor: pointer;
+    
+    &::after {
+      content: "\F107";
+      font-family: 'FontAwesome';
+      transform: translateX(-100%);
+      position: absolute;
+      right: 0;
+    }
+    
+    &.--open {
+      &::after {
+        content: "\F106";
+      }
+    }
+  }
+	
+	.search-categories-list {
+	  background: #fff;
+    display: none; //ma byc none
+    position: absolute;
+    top: 45px;
+    width: 170px;
+    z-index: 110;
+    left: 0;
+    border: 1px solid @less_iaicolorscheme_background_mask_border_color;
+    border-top: none;
+    border-radius: 0;
+    padding: 1rem 0;
+    
+    
+    .search-categories-list-sub {
+      a.search_top_cat_list_item.first {
+        display: none !important;
+      }
+      
+      .search_top_cat_list_item {
+        &.active {
+          color: @less_iaicolorscheme_primary_color;
+        }
+        &:hover {
+          color: @less_iaicolorscheme_primary_color;
+        }
+      }
+      
+      .scat_level_1 {
+          list-style-type: none;
+      }
+      .scat_level_1_link {
+        clear: both;
+        color: @less_iaicolorscheme_background_text_color;
+        display: block;
+        font-size: 11px;
+        padding: 3px 10px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .scat_level_2 {
+        list-style-type: none;
+        padding: 0 10px;
+      }
+      .scat_level_2_link {
+        clear: both;
+        color: @less_iaicolorscheme_background_text_color;
+        display: block;
+        font-size: 11px;
+        padding: 3px 10px;
+        text-decoration: none;
+      }
+      
+    }
+  }

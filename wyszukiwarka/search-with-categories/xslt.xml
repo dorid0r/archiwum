@@ -1,0 +1,98 @@
+		<!-- KATEGORIE -->
+        <div id="search-categories">
+            <div class="search-categories-title">
+                <div class="search-categories-title_sub">
+                    
+                    <iaixsl:choose>
+                        <iaixsl:when test="/shop/page/search_params/node/@value != ''">
+                            <iaixsl:value-of disable-output-escaping="yes" select="/shop/page/search_params/node/@value" />   
+                        </iaixsl:when>
+                        <iaixsl:otherwise>
+                            <iai:variable vid="Kategorie" description="Kategorie"><![CDATA[wszystkie kategorie]]></iai:variable>
+                        </iaixsl:otherwise>
+                    </iaixsl:choose>
+
+                </div>
+            </div>
+            <div class="search-categories-list">
+                <div class="search-categories-list-sub">
+                    <a href="javascript:void(0)" class="search_top_cat_list_item first"><iai:variable vid="Kategorie" description="Kategorie"><![CDATA[Kategorie]]></iai:variable></a>
+                
+                    <iaixsl:for-each select="navigation/item/item//item[@ni = /shop/page/search_params/node/@id]">
+                        <iaixsl:if test="@ni = /shop/page/search_params/node/@id">
+                            <a class="search_top_cat_list_item current_link active" href="javascript:void(0)">
+                                <iaixsl:attribute name="id"><iaixsl:value-of select="/shop/page/search_params/node/@id" /></iaixsl:attribute>
+                                <iaixsl:value-of select="/shop/page/search_params/node/@value" />
+                            </a>
+                        </iaixsl:if>
+                    </iaixsl:for-each>
+                    
+                    <ul class="scat_level_1">
+                        <iaixsl:for-each select="navigation/item">
+                        <li class="scat_level_1_link_li">
+                            <iaixsl:if test="@link and @link != '##'">
+                            <a class="search_top_cat_list_item scat_level_1_link" href="javascript:void(0)">
+                                <iaixsl:attribute name="id"><iaixsl:value-of select="@id" /></iaixsl:attribute>
+                                <iaixsl:if test="@id = /shop/navigation/current/@ni or @id = /shop/navigation/current/@id">
+                                    <iaixsl:attribute name="class"><![CDATA[search_top_cat_list_item scat_level_1_link active]]></iaixsl:attribute>
+                                </iaixsl:if>  
+                                <iaixsl:value-of select="@name" />
+                            </a>
+                            </iaixsl:if>
+                            <ul class="scat_level_2">
+                                <iaixsl:for-each select="item">
+                                    <li class="scat_level_2_li">
+                                        <iaixsl:if test="@link and @link != '##'">
+                                        <a class="search_top_cat_list_item scat_level_2_link" href="javascript:void(0)">
+                                            <iaixsl:attribute name="id"><iaixsl:value-of select="@ni" /></iaixsl:attribute>
+                                            <iaixsl:if test="@ni = /shop/navigation/current/@ni or @ni = /shop/navigation/current/@id">
+                                                <iaixsl:attribute name="class"><![CDATA[search_top_cat_list_item scat_level_2_link active]]></iaixsl:attribute>
+                                            </iaixsl:if>
+                                            <iaixsl:value-of select="@name" />
+                                        </a>
+                                        </iaixsl:if>                                            
+                                    </li>
+                                </iaixsl:for-each>
+                            </ul>
+                        </li>
+                        </iaixsl:for-each>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <select class="category_node" name="node">
+                        <option><iaixsl:attribute name="value"><![CDATA[]]></iaixsl:attribute></option>
+
+                        <iaixsl:for-each select="navigation/item/item//item[@ni = /shop/page/search_params/node/@id]">
+                            <iaixsl:if test="@ni = /shop/page/search_params/node/@id">
+                                <option>
+                                    <iaixsl:attribute name="id"><![CDATA[op_]]><iaixsl:value-of select="/shop/page/search_params/node/@id" /></iaixsl:attribute>
+                                    <iaixsl:attribute name="value"><iaixsl:value-of select="/shop/page/search_params/node/@id" /></iaixsl:attribute>
+                                    <iaixsl:attribute name="selected"><![CDATA[selected]]></iaixsl:attribute>
+                                    <iaixsl:value-of select="/shop/page/search_params/node/@value" />
+                                </option>
+                            </iaixsl:if>
+                        </iaixsl:for-each>
+
+                <iaixsl:for-each select="navigation/item">
+                    <option>
+                        <iaixsl:attribute name="id"><![CDATA[op_]]><iaixsl:value-of select="@id" /></iaixsl:attribute>
+                        <iaixsl:attribute name="value"><iaixsl:value-of select="@id" /></iaixsl:attribute>
+                        <iaixsl:if test="@id = /shop/navigation/current/@ni or @id = /shop/navigation/current/@id">
+                            <iaixsl:attribute name="selected"><![CDATA[selected]]></iaixsl:attribute>
+                        </iaixsl:if>   
+                        <iaixsl:value-of select="@name" />
+                    </option>
+                    <iaixsl:for-each select="item">
+                    <option>
+                        <iaixsl:attribute name="id"><![CDATA[op_]]><iaixsl:value-of select="@ni" /></iaixsl:attribute>
+                        <iaixsl:attribute name="value"><iaixsl:value-of select="@ni" /></iaixsl:attribute>
+                        <iaixsl:if test="@ni = /shop/navigation/current/@ni or @ni = /shop/navigation/current/@id">
+                            <iaixsl:attribute name="selected"><![CDATA[selected]]></iaixsl:attribute>
+                        </iaixsl:if>  
+                        <iaixsl:value-of select="@name" />
+                    </option>
+                </iaixsl:for-each>
+                </iaixsl:for-each>
+            </select>
+        <!-- //KATEGORIE -->
