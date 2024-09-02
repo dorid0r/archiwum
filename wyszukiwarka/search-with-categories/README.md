@@ -1,4 +1,4 @@
-# Wyszukiwarka z wyboren kategorii
+# Wyszukiwarka z wyborem kategorii
 ![kat1](https://github.com/user-attachments/assets/0b5b4e3c-3861-4af5-8f33-b184b0c2e6e9)
 
 ![kat2](https://github.com/user-attachments/assets/900d9843-f7c5-40ee-bcb3-e4701b174600)
