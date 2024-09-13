@@ -1,0 +1,153 @@
+.product {
+  &.--show-sizes {
+    .product__details {
+      display: block;
+    }
+  }
+  
+  &.--show-sizes-label {
+    .product__sizes__label {
+      display: block;
+    }
+  }
+  
+  &__buy_section {
+    display: flex;
+	  margin-top: 2rem;
+	  flex-direction: column;
+	  row-gap: 1rem;
+	  
+	  
+	  @media(min-width: 1200px) {
+	    flex-direction: row;
+		  row-gap: unset;
+	  }
+	  
+	  &.--disabled {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+    
+    &.--link {
+      .product_buy__button {
+        height: 4rem;
+        width: 100%;
+        max-width: unset;
+      }
+    }
+  }
+  
+  &__buy_number_wrapper {
+    align-items: center;
+		border: 1px solid @gray_color;
+		border-radius: @less_iaicolorscheme_border_radius_value;
+		display: flex;
+    overflow: hidden;
+		width: 100%;
+		
+		
+		@media @desktop {
+		  min-width: 90px;
+		  width: ~"calc(30% - 1rem)";
+		  max-width: 106px;
+		  margin-right: 1.1rem;
+		}
+
+		& > * {
+		  border: 0;
+			height: 40px;
+			flex: 1;
+			text-align: center;
+			padding: 0.5rem;
+			min-width: 0;
+		}
+  }
+  
+  &__buy_number_wrapper_button {
+    flex: 1;
+        
+    &[data-express-checkout] {
+      opacity: 0.8;
+    }
+  }
+  
+  &__buy_number {
+	  background: @less_iaicolorscheme_background_color;
+		flex: 2;
+		font-size: 1.6rem;
+		padding: 0;
+		width: 100%;
+	}
+	
+	&__buy_number_down,
+	&__buy_number_up {
+	  background: @less_iaicolorscheme_background_color;
+	  font-size: 1.7rem;
+		transition: color 0.2s;
+
+		&:hover {
+			color: @primary_color;
+		}
+	}
+	
+	&__buy_button,
+	&__buy_link {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+		flex: 1;
+	  max-height: 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    
+    @media(min-width: 1200px) {
+      max-width: 278px;
+    }
+    
+    
+    &.--loading {
+      .loading();
+      
+      &:before {
+        border-radius: @less_iaicolorscheme_border_radius_value;
+      }
+    }
+
+    
+		i {
+		  margin-right: 12px; 
+		  
+		  &:before {
+		    font-size: 1.8rem;
+		  }
+		}
+	}
+
+  &__details {
+    display: none;
+    padding: 1rem;
+  }
+  
+  &__sizes_label {
+    display: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: .5rem;
+  }
+  
+  &__sizes_row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    justify-content: flex-start;
+  }
+  
+  &__size {
+    &.f-group {
+      margin: 0;
+    }
+  }
+}
