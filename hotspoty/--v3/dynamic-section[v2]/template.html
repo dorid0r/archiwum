@@ -1,0 +1,114 @@
+<!-- Pojedyncza sekcja do umieszczenia na stronie -->
+<section class="hotspot__dynamic mb-5" data-id="791">
+    <div class="hotspot__dynamic__skeleton">
+        <span class="headline"></span>
+        <div class="products">
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mnoga sekcja do umieszczenia na stronie -->
+<section class="hotspot__dynamic mb-5" data-id="791,792,793,794">
+    <div class="hotspot__dynamic__skeleton">
+        <span class="headline"></span>
+        <div class="products">
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+            <div class="product">
+                <span class="product__icon d-flex justify-content-center align-items-center"></span>
+                <div class="product__details">
+                    <span class="product__name"></span>
+                    <div class="product__prices"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Szablon dla pojedynczych sekcji -->
+<template id="single-template">
+    <h2>
+        <a class="headline" href="#">
+            <span class="headline__name"></span>
+            <span class="headline__after"></span>
+        </a>
+    </h2>
+    <div class="hotspot__dynamic__section"></div>
+</template>
+
+<!-- Szablon dla mnogich sekcji -->
+<template id="multi-template">
+    <div class="hotspot__dynamic__tabs">
+        <div class="hotspot__dynamic__tab"><span></span></div>
+    </div>
+    <div class="hotspot__dynamic__sections">
+        <div class="hotspot__dynamic__section">
+            <div class="hotspot__dynamic__section__row"></div>
+            <div class="hotspot__dynamic__section__more"><a href="#"></a></div>
+        </div>
+    </div>
+</template>
+
+<!-- Szablon dla obsługi rozmiarów przy dodawaniu do listy zakupowej -->
+<template id="dialog-sizes">
+    <div class="sl_dialog sizes_dialog_search">
+        <div class="sl_choose__wrapper sl_dialog__wrapper p-4 p-md-5">
+            <a class="sizes_dialog --close">
+                <i class="icon-x"></i>
+            </a>
+            <div class="sl_choose__item --top mb-2">
+                <strong>Proszę wybrać rozmiar</strong>
+            </div>
+            <div class="sl_choose__item --sizes">
+                <a class="product__sizes__button" data-type="size">Rozmiar</a>
+            </div>
+        </div>
+    </div>
+</template>

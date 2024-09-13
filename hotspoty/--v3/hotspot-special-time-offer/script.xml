@@ -1,0 +1,1577 @@
+<!--hotspot zone 1 start-->
+<iaiajaxstart iai-ajax-id="menu_hotspot_zone1" iai-ajax-generated="true" />
+<iaixsl:if test="/shop/hotspot/products_zone1">
+  <section id="menu_hotspot_zone1" class="hotspot --hotstuff mb-5">
+    <!-- Variables -->
+    <iaixsl:variable name="headline_after_products_zone1">
+      <iai:variable vid="Zobacz wszystkie" />
+    </iaixsl:variable>
+    <!-- Atrybuty pod ajax hotspot -->
+    <iaixsl:if test="not(shop/hotspot/products_zone1/product or /shop/hotspot/products_zone1/opinion)">
+      <iaixsl:attribute name="data-ajaxLoad"><![CDATA[true]]></iaixsl:attribute>
+      <iaixsl:attribute name="data-pageType"><![CDATA[menu]]></iaixsl:attribute>
+    </iaixsl:if>
+
+    <!-- OMNIBUS -->
+    <!-- Zmienna przechowująca stan Omnibusa - włączony (omnibus = 1) / wyłączony -->
+    <iaixsl:variable name="var_omnibus_enabled">
+      <iaixsl:if test="/shop/@omnibus = 1"><![CDATA[true]]></iaixsl:if>
+    </iaixsl:variable>
+    <!-- OMNIBUS-END -->
+
+    <iaixsl:choose>
+      <iaixsl:when test="/shop/hotspot/products_zone1/product or /shop/hotspot/products_zone1/opinion">
+        <div class="products d-flex flex-wrap">
+          <!--<iaixsl:variable
+          name="var_zone1_pos"><iaixsl:if test="/shop/hotspot/products_zone1/*/traits/trait[@groupid='133071']"> <iaixsl:value-of select="position()"/></iaixsl:if></iaixsl:variable>-->
+          <iaixsl:for-each select="/shop/hotspot/products_zone1/*">
+            <!-- Local Variables -->
+            <iaixsl:variable name="var_name">
+              <iaixsl:choose>
+                <iaixsl:when test="product">
+                  <iaixsl:value-of disable-output-escaping="yes" select="product/name/text()" />
+                </iaixsl:when>
+                <iaixsl:otherwise>
+                  <iaixsl:value-of disable-output-escaping="yes" select="name/text()" />
+                </iaixsl:otherwise>
+              </iaixsl:choose>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_icon">
+              <iaixsl:choose>
+                <iaixsl:when test="product">
+                  <iaixsl:value-of select="product/icon" />
+                </iaixsl:when>
+                <iaixsl:otherwise>
+                  <iaixsl:value-of select="icon" />
+                </iaixsl:otherwise>
+              </iaixsl:choose>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_icon_small">
+              <iaixsl:choose>
+                <iaixsl:when test="product">
+                  <iaixsl:value-of select="product/icon_small" />
+                </iaixsl:when>
+                <iaixsl:otherwise>
+                  <iaixsl:value-of select="icon_small" />
+                </iaixsl:otherwise>
+              </iaixsl:choose>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_link">
+              <iaixsl:choose>
+                <iaixsl:when test="product">
+                  <iaixsl:value-of select="product/@link" />
+                </iaixsl:when>
+                <iaixsl:otherwise>
+                  <iaixsl:value-of select="@link" />
+                </iaixsl:otherwise>
+              </iaixsl:choose>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_yousave"></iaixsl:variable>
+            <iaixsl:variable name="var_net_prices">
+              <iaixsl:if test="/shop/page/@price_type = 'net'">
+                <iai:variable vid="netto" />
+              </iaixsl:if>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_gross_prices">
+              <iaixsl:if test="/shop/page/@price_type = 'gross'">
+                <iai:variable vid="brutto" />
+              </iaixsl:if>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_icon_second">
+              <iaixsl:choose>
+                <iaixsl:when test="product">
+                  <iaixsl:value-of select="product/icon_second" />
+                </iaixsl:when>
+                <iaixsl:otherwise>
+                  <iaixsl:value-of select="icon_second" />
+                </iaixsl:otherwise>
+              </iaixsl:choose>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_icon_small_second">
+              <iaixsl:choose>
+                <iaixsl:when test="product">
+                  <iaixsl:value-of select="product/icon_small_second" />
+                </iaixsl:when>
+                <iaixsl:otherwise>
+                  <iaixsl:value-of select="icon_small_second" />
+                </iaixsl:otherwise>
+              </iaixsl:choose>
+            </iaixsl:variable>
+            <iaixsl:variable name="var_b2b"></iaixsl:variable>
+
+            <!--Sprawdzamy
+            czy produkt posiada parametr oferty dnia-->
+            <iaixsl:if test="traits/trait[@groupid='133071']">
+
+
+              <div class="product">
+                <iaixsl:attribute name="data-product-id">
+                  <iaixsl:value-of select="@id" />
+                </iaixsl:attribute>
+
+                <div class="product__timer">
+                  <!-- Nazwa hotspotu -->
+                  <div class="headline__wrapper">
+                    <h2>
+                      <iaixsl:choose>
+                        <iaixsl:when test="/shop/hotspot/products_zone1/@link">
+                          <a class="headline">
+                            <iaixsl:attribute name="href">
+                              <iaixsl:value-of select="/shop/hotspot/products_zone1/@link" />
+                            </iaixsl:attribute>
+                            <iaixsl:attribute name="title">
+                              <iai:variable vid="Kliknij aby zobaczyć wszystkie produkty" />
+                            </iaixsl:attribute>
+
+                            <span class="headline__name">
+                              <iaixsl:choose>
+                                <iaixsl:when test="/shop/hotspot/products_zone1/@name">
+                                  <iaixsl:value-of select="/shop/hotspot/products_zone1/@name" />
+                                </iaixsl:when>
+                                <iaixsl:otherwise>
+                                  <iai:variable vid="Nowości" />
+                                </iaixsl:otherwise>
+                              </iaixsl:choose>
+                            </span>
+                          </a>
+                        </iaixsl:when>
+                        <iaixsl:otherwise>
+                          <span class="headline">
+                            <span class="headline__name">
+                              <iaixsl:choose>
+                                <iaixsl:when test="/shop/hotspot/products_zone1/@name">
+                                  <iaixsl:value-of select="/shop/hotspot/products_zone1/@name" />
+                                </iaixsl:when>
+                                <iaixsl:otherwise>
+                                  <iai:variable vid="Nowości" />
+                                </iaixsl:otherwise>
+                              </iaixsl:choose>
+                            </span>
+                          </span>
+                        </iaixsl:otherwise>
+                      </iaixsl:choose>
+                    </h2>
+                  </div>
+                  <div class="product__timer_content">
+                    <span class="--hot">
+                      <iai:variable vid="#i" />
+                      <span>
+                        <iai:variable vid="AmSo" />
+                      </span>
+                      <iai:variable vid="HotStuff" />
+                    </span>
+                    <div id="productTimer"></div>
+                    <span class="product__timer_info">
+                      <iai:variable vid="Oferta limitowana" />
+                    </span>
+                  </div>
+                </div>
+                <div class="product__timer_wrapper">
+                  <!-- YOUSAVE - aktywowane literałem label oszczędzasz XXX -->
+                  <iaixsl:if test="$var_yousave and not($var_yousave = '') and price/@yousave_formatted != ''">
+                    <div class="product__yousave">
+                      <span class="product__yousave --label">
+                        <iaixsl:value-of select="$var_yousave" />
+                      </span>
+                      <span class="product__yousave --value">
+                        <iaixsl:value-of select="price/@yousave_formatted" />
+                      </span>
+                    </div>
+                  </iaixsl:if>
+                  <div class="product__icon_wrapper">
+                    <!-- IKONA PRODUKTU -->
+                    <a class="product__icon d-flex justify-content-center align-items-center">
+                      <iaixsl:attribute name="data-product-id">
+                        <iaixsl:value-of select="@id" />
+                      </iaixsl:attribute>
+                      <iaixsl:attribute name="href">
+                        <iaixsl:value-of select="$var_link" />
+                      </iaixsl:attribute>
+                      <iaixsl:attribute name="title">
+                        <iaixsl:value-of select="$var_name" />
+                      </iaixsl:attribute>
+
+                      <iaixsl:choose>
+                        <iaixsl:when test="$var_icon_second and not($var_icon_second = '/' or $var_icon_second = '') and $var_icon_small_second and not($var_icon_small_second = '/' or $var_icon_small_second = '')">
+                          <picture>
+                            <source media="(min-width: 421px)" type="image/webp">
+                              <iaixsl:attribute name="srcset">
+                                <iaixsl:value-of select="$var_icon" />
+                              </iaixsl:attribute>
+                            </source>
+                            <source media="(min-width: 421px)" type="image/jpeg">
+                              <iaixsl:attribute name="srcset">
+                                <iaixsl:value-of select="$var_icon_second" />
+                              </iaixsl:attribute>
+                            </source>
+                            <source media="(max-width: 420px)" type="image/webp">
+                              <iaixsl:attribute name="srcset">
+                                <iaixsl:value-of select="$var_icon_second" />
+                              </iaixsl:attribute>
+                            </source>
+
+                            <img src="/gfx/pol/loader.gif?r=1642670063" class="b-lazy">
+                              <iaixsl:attribute name="data-src-small">
+                                <iaixsl:value-of disable-output-escaping="yes" select="$var_icon_second" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="data-src">
+                                <iaixsl:value-of disable-output-escaping="yes" select="$var_icon_second" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="alt">
+                                <iaixsl:value-of disable-output-escaping="yes" select="$var_name" />
+                              </iaixsl:attribute>
+                            </img>
+
+                          </picture>
+                        </iaixsl:when>
+                        <iaixsl:otherwise>
+                          <img src="/gfx/pol/loader.gif?r=1642670063" class="b-lazy">
+                            <iaixsl:attribute name="data-src-small">
+                              <iaixsl:value-of disable-output-escaping="yes" select="$var_icon_second" />
+                            </iaixsl:attribute>
+                            <iaixsl:attribute name="data-src">
+                              <iaixsl:value-of disable-output-escaping="yes" select="$var_icon" />
+                            </iaixsl:attribute>
+                            <iaixsl:attribute name="alt">
+                              <iaixsl:value-of disable-output-escaping="yes" select="$var_name" />
+                            </iaixsl:attribute>
+                          </img>
+                        </iaixsl:otherwise>
+                      </iaixsl:choose>
+                    </a>
+                    <!-- Badge -->
+                    <iaixsl:choose>
+                      <iaixsl:when test="sizes/size/price/@yousave_percent">
+                        <div class="product__badge">
+                          <span class="label --new --save">
+                            <iaixsl:value-of select="sizes/size/price/@yousave_percent" />
+                          </span>
+                        </div>
+                      </iaixsl:when>
+                      <iaixsl:when test="price/@yousave_percent">
+                        <div class="product__badge">
+                          <span class="label --new --save">
+                            <iaixsl:value-of select="price/@yousave_percent" />
+                          </span>
+                        </div>
+                      </iaixsl:when>
+                    </iaixsl:choose>
+                  </div>
+                  <div class="product__info_wrapper">
+                    <!-- NAZWA PRODUKTU -->
+                    <h3>
+                      <a class="product__name">
+                        <iaixsl:attribute name="href">
+                          <iaixsl:value-of select="$var_link" />
+                        </iaixsl:attribute>
+                        <iaixsl:attribute name="title">
+                          <iaixsl:value-of select="$var_name" />
+                        </iaixsl:attribute>
+                        <iaixsl:value-of select="$var_name" />
+                      </a>
+                    </h3>
+
+                    <iaixsl:choose>
+                      <!-- CENA BRUTTO -->
+                      <iaixsl:when test="$var_net_prices = ''">
+                        <!-- Dane wymagane - omnibus-short -->
+                        <!-- OMNIBUS-FALLBACK -->
+                        <iaixsl:variable name="var_size_min">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_min">
+                              <iaixsl:value-of select="product/sizes/prices/@size_min" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_min">
+                              <iaixsl:value-of select="sizes/prices/@size_min" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_max">
+                              <iaixsl:value-of select="product/sizes/prices/@size_max" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_max">
+                              <iaixsl:value-of select="sizes/prices/@size_max" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_min_maxprice">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_maxprice" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_min_maxprice">
+                              <iaixsl:value-of select="product/sizes/prices/@size_min_maxprice" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_min_maxprice">
+                              <iaixsl:value-of select="sizes/prices/@size_min_maxprice" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_maxprice" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max_maxprice">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max_maxprice" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_max_maxprice">
+                              <iaixsl:value-of select="product/sizes/prices/@size_max_maxprice" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_max_maxprice">
+                              <iaixsl:value-of select="sizes/prices/@size_max_maxprice" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max_maxprice" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_maxprice">
+                          <iaixsl:choose>
+                            <iaixsl:when test="price/@maxprice_unit">
+                              <iaixsl:value-of select="price/@maxprice_unit" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/price/@maxprice_unit">
+                              <iaixsl:value-of select="product/price/@maxprice_unit" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/price/@maxprice">
+                              <iaixsl:value-of select="product/price/@maxprice" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@maxprice" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <!-- OMNIBUS-FALLBACK-END -->
+
+                        <iaixsl:variable name="var_size_min_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_min_maxprice_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_maxprice_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_maxprice_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max_maxprice_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max_maxprice_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max_maxprice_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_points">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@points" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@points" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <iaixsl:variable name="var_value">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_price_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="price/@price_unit_formatted and sizes/@unit">
+                              <iaixsl:value-of select="price/@price_unit_formatted" />
+                              <iaixsl:text><![CDATA[ / ]]></iaixsl:text>
+                              <iaixsl:value-of select="sizes/@unit_sellby" />
+                              <iaixsl:text> </iaixsl:text>
+                              <iaixsl:value-of select="sizes/@unit" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product/price/@price_unit_formatted and product/sizes/@unit">
+                              <iaixsl:value-of select="product/price/@price_unit_formatted" />
+                              <iaixsl:text><![CDATA[ / ]]></iaixsl:text>
+                              <iaixsl:value-of select="product/sizes/@unit_sellby" />
+                              <iaixsl:text> </iaixsl:text>
+                              <iaixsl:value-of select="product/sizes/@unit" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="$var_size_min_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <iaixsl:variable name="var_maxprice_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="price/@maxprice_unit_formatted">
+                              <iaixsl:value-of select="price/@maxprice_unit_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product/price/@maxprice_unit_formatted">
+                              <iaixsl:value-of select="product/price/@maxprice_unit_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@maxprice_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@maxprice_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- OMNIBUS -->
+                        <!-- Najniższa cena Omnibusa z listy rozmiarów -->
+                        <iaixsl:variable name="var_omnibus_min">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product and product/price/@min_omnibus_price_formatted">
+                              <iaixsl:value-of select="product/price/@min_omnibus_price_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="price/@min_omnibus_price_formatted">
+                              <iaixsl:value-of select="price/@min_omnibus_price_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/size/price">
+                              <iaixsl:for-each select="product/sizes/size[price/@omnibus_price]">
+                                <iaixsl:sort select="price/@omnibus_price" data-type="number" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@omnibus_price_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/size/price">
+                              <iaixsl:for-each select="sizes/size[price/@omnibus_price]">
+                                <iaixsl:sort select="price/@omnibus_price" data-type="number" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@omnibus_price_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- Najwyższa cena Omnibusa z listy rozmiarów -->
+                        <iaixsl:variable name="var_omnibus_max">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product and product/price/@max_omnibus_price_formatted">
+                              <iaixsl:value-of select="product/price/@max_omnibus_price_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="price/@max_omnibus_price_formatted">
+                              <iaixsl:value-of select="price/@max_omnibus_price_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/size/price">
+                              <iaixsl:for-each select="product/sizes/size[price/@omnibus_price]">
+                                <iaixsl:sort select="price/@omnibus_price" data-type="number" order="descending" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@omnibus_price_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/size/price">
+                              <iaixsl:for-each select="sizes/size[price/@omnibus_price]">
+                                <iaixsl:sort select="price/@omnibus_price" data-type="number" order="descending" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@omnibus_price_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- Cena lub przedział Omnibusa w zależności od tego czy najniższa i najwyższa cena Omnibusa są od siebie różne -->
+                        <iaixsl:variable name="var_omnibus">
+                          <iaixsl:if test="$var_omnibus_enabled = 'true'">
+                            <iaixsl:choose>
+                              <iaixsl:when test="$var_omnibus_min != $var_omnibus_max">
+                                <span>
+                                  <iaixsl:value-of select="$var_omnibus_min" />
+                                </span>
+                                <b>
+                                  <iaixsl:text><![CDATA[ - ]]></iaixsl:text>
+                                </b>
+                                <span>
+                                  <iaixsl:value-of select="$var_omnibus_max" />
+                                </span>
+                              </iaixsl:when>
+                              <iaixsl:when test="$var_omnibus_min != ''">
+                                <iaixsl:value-of select="$var_omnibus_min" />
+                              </iaixsl:when>
+                            </iaixsl:choose>
+                          </iaixsl:if>
+                        </iaixsl:variable>
+
+                        <!-- Zmienna przechowująca informację czy ma być wyświetlona skrócona wersja Omnibusa -->
+                        <iaixsl:variable name="var_omnibus_short">
+                          <iaixsl:if test="$var_omnibus_enabled = 'true'">
+                            <iaixsl:choose>
+                              <iaixsl:when test="$var_size_min_formatted != $var_size_max_formatted and $var_size_min_maxprice_formatted = $var_omnibus_min and $var_size_max_maxprice_formatted = $var_omnibus_max"><![CDATA[true]]></iaixsl:when>
+                              <iaixsl:when test="$var_maxprice_formatted = $var_omnibus"><![CDATA[true]]></iaixsl:when>
+                            </iaixsl:choose>
+                          </iaixsl:if>
+                        </iaixsl:variable>
+
+                        <!-- OMNIBUS-FALLBACK -->
+                        <!-- Zmienna przechowująca tablicę dat wszystkich rozmiarów w formacie [data; typ rozmiaru #separator# data; typ rozmiaru] -->
+                        <!-- Jeśli ilość rozmiarów jest mniejsza niż 1 lub rozmiary nie zawierają atrybutu z datą ostatniej zmiany ceny to zostanie użyta data z węzła /product/price -->
+                        <iaixsl:variable name="last_price_change_date">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product and product/sizes/size/price and (count(product/sizes/size) &gt; 1)">
+                              <iaixsl:for-each select="product/sizes/size[price/@last_price_change_date]">
+                                <iaixsl:if test="@type and price/@last_price_change_date">
+                                  <iaixsl:value-of select="price/@last_price_change_date" /><![CDATA[;']]>
+                                  <iaixsl:value-of select="@type" /><![CDATA[']]>
+                                  <iaixsl:if test="not(position() = last())"><![CDATA[#separator#]]></iaixsl:if>
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@last_price_change_date" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/size/price and (count(sizes/size) &gt; 1)">
+                              <iaixsl:for-each select="sizes/size[price/@last_price_change_date]">
+                                <iaixsl:if test="@type and price/@last_price_change_date">
+                                  <iaixsl:value-of select="price/@last_price_change_date" /><![CDATA[;']]>
+                                  <iaixsl:value-of select="@type" /><![CDATA[']]>
+                                  <iaixsl:if test="not(position() = last())"><![CDATA[#separator#]]></iaixsl:if>
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="price/@last_price_change_date">
+                              <iaixsl:value-of select="price/@last_price_change_date" />
+                            </iaixsl:when>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- Zmienna przechowująca informację czy fallback na bramkę GraphQL ma zostać uruchomiony -->
+                        <iaixsl:variable name="var_show_omnibus_short_fallback">
+                          <iaixsl:choose>
+                            <iaixsl:when test="($var_omnibus = '' and $var_omnibus_enabled = 'true' and not($last_price_change_date = ''))"><![CDATA[true]]></iaixsl:when>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <!-- OMNIBUS-FALLBACK-END -->
+                        <!-- OMNIBUS-END -->
+
+                        <div class="product__prices">
+                          <iaixsl:if test="$var_omnibus != ''">
+                            <iaixsl:attribute name="class"><![CDATA[product__prices --omnibus]]>
+                              <iaixsl:if test="$var_omnibus_short = 'true'"><![CDATA[ --omnibus-short]]></iaixsl:if>
+                            </iaixsl:attribute>
+                          </iaixsl:if>
+
+                          <!-- OMNIBUS-FALLBACK -->
+                          <!-- Jeśli Omnibus z ceną nie jest zwracany w xmlu a dostępna jest data to zostaną dodane atrybuty wymagane dla mechanizmu fallbacku -->
+                          <iaixsl:if test="$var_show_omnibus_short_fallback = 'true'">
+
+                            <!-- Atrybut z datą ostatniej zmiany ceny -->
+                            <iaixsl:attribute name="data-last_price_change_date">
+                              <iaixsl:value-of select="$last_price_change_date" />
+                            </iaixsl:attribute>
+
+                            <!-- Atrybut z informacją dla mechanizmu fallbacku w jakim miejscu na stronie znajduje się atrybut z datą -->
+                            <!-- Wymagane do mapowania funkcji modyfikujących strukturę HTMLa i obsługujących wyświetlanie danych z bramki GraphQL -->
+                            <iaixsl:attribute name="data-omnibus-type"><![CDATA[hotspot]]></iaixsl:attribute>
+
+                            <!-- Atrybut z ID produktu -->
+                            <iaixsl:if test="product and product/@id">
+                              <iaixsl:attribute name="data-omnibus_product_id">
+                                <iaixsl:value-of select="product/@id" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_min">
+                              <iaixsl:attribute name="data-size_min">
+                                <iaixsl:value-of select="$var_size_min" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_max">
+                              <iaixsl:attribute name="data-size_max">
+                                <iaixsl:value-of select="$var_size_max" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_min_maxprice">
+                              <iaixsl:attribute name="data-size_min_maxprice">
+                                <iaixsl:value-of select="$var_size_min_maxprice" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_max_maxprice">
+                              <iaixsl:attribute name="data-size_max_maxprice">
+                                <iaixsl:value-of select="$var_size_max_maxprice" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_maxprice">
+                              <iaixsl:attribute name="data-maxprice">
+                                <iaixsl:value-of select="$var_maxprice" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+                          </iaixsl:if>
+                          <!-- OMNIBUS-FALLBACK-END -->
+
+                          <iaixsl:choose>
+                            <!-- Zakres ceny od - do -->
+                            <iaixsl:when test="$var_size_min_formatted != $var_size_max_formatted">
+                              <iaixsl:if test="$var_size_min_maxprice_formatted != ''">
+                                <span class="price --max">
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_label --hidden"><iaixsl:if test="$var_omnibus_short != 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_label]]></iaixsl:attribute>
+                                      </iaixsl:if><iai:variable vid="Cena regularna" />: </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                  <del>
+                                    <span>
+                                      <iaixsl:value-of select="$var_size_min_maxprice_formatted" />
+                                    </span>
+                                    <b>
+                                      <iaixsl:text><![CDATA[ - ]]></iaixsl:text>
+                                    </b>
+                                    <span>
+                                      <iaixsl:value-of select="$var_size_max_maxprice_formatted" />
+                                    </span>
+                                    <span class="price_vat">
+                                      <iaixsl:value-of select="$var_gross_prices" />
+                                    </span>
+                                  </del>
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short = 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_short --hidden">
+                                      <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short = 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_short]]></iaixsl:attribute>
+                                      </iaixsl:if>
+                                      <iai:variable vid="Najniższa cena z 30 dni przed obniżką" />
+                                    </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                </span>
+                              </iaixsl:if>
+                              <strong class="price">
+                                <iaixsl:value-of select="$var_size_min_formatted" />
+                                <iaixsl:text><![CDATA[ - ]]></iaixsl:text>
+                                <iaixsl:value-of select="$var_size_max_formatted" />
+                                <span class="price_vat">
+                                  <iaixsl:value-of select="$var_gross_prices" />
+                                </span>
+                              </strong>
+                              <iaixsl:if test="$var_points != ''">
+                                <span class="price --points">
+                                  <iaixsl:value-of select="$var_points" />
+                                  <span class="currency">
+                                    <iai:variable vid="pkt" />.</span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS -->
+                              <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                <span class="omnibus_price --hidden">
+                                  <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short != 'true'">
+                                    <iaixsl:attribute name="class"><![CDATA[omnibus_price]]></iaixsl:attribute>
+                                  </iaixsl:if>
+                                  <span class="omnibus_price__text"><iai:variable vid="Najniższa cena produktu w okresie 30 dni przed wprowadzeniem obniżki" />: </span>
+                                  <span class="omnibus_price__value">
+                                    <iaixsl:value-of select="$var_omnibus" />
+                                  </span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS-END -->
+                            </iaixsl:when>
+
+                            <!-- Cena na telefon -->
+                            <iaixsl:when test="(($var_value = 0) and $var_points = '') or ($var_value = 0 and $var_b2b and not($var_b2b = '') and not(/shop/basket/@wholesaler = 'true'))">
+                              <iaixsl:choose>
+                                <iaixsl:when test="$var_b2b and not($var_b2b = '')">
+                                  <a class="price --phone" href="/signin.php">
+                                    <iaixsl:attribute name="title">
+                                      <iaixsl:value-of select="$var_b2b" />
+                                    </iaixsl:attribute>
+                                    <iaixsl:value-of select="$var_b2b" />
+                                  </a>
+                                </iaixsl:when>
+                                <iaixsl:otherwise>
+                                  <a class="price --phone" href="/contact.php">
+                                    <iaixsl:attribute name="title">
+                                      <iai:variable vid="Kliknij, by przejść do formularza kontaktu" />
+                                    </iaixsl:attribute>
+                                    <iai:variable vid="Cena na telefon" />
+                                  </a>
+                                </iaixsl:otherwise>
+                              </iaixsl:choose>
+                            </iaixsl:when>
+
+                            <!-- Domyślna cena -->
+                            <iaixsl:otherwise>
+                              <iaixsl:if test="$var_maxprice_formatted != ''">
+                                <span class="price --max">
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_label --hidden"><iaixsl:if test="$var_omnibus_short != 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_label]]></iaixsl:attribute>
+                                      </iaixsl:if><iai:variable vid="Cena regularna" />: </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                  <del>
+                                    <iaixsl:value-of select="$var_maxprice_formatted" />
+                                    <span class="price_vat">
+                                      <iaixsl:value-of select="$var_gross_prices" />
+                                    </span>
+                                  </del>
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short = 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_short --hidden">
+                                      <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short = 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_short]]></iaixsl:attribute>
+                                      </iaixsl:if>
+                                      <iai:variable vid="Najniższa cena z 30 dni przed obniżką" />
+                                    </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                </span>
+                              </iaixsl:if>
+                              <strong class="price">
+                                <iaixsl:value-of select="$var_price_formatted" />
+                                <span class="price_vat">
+                                  <iaixsl:value-of select="$var_gross_prices" />
+                                </span>
+                              </strong>
+                              <iaixsl:if test="$var_points != ''">
+                                <span class="price --points">
+                                  <iaixsl:value-of select="$var_points" />
+                                  <span class="currency">
+                                    <iai:variable vid="pkt" />.</span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS -->
+                              <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                <span class="omnibus_price --hidden">
+                                  <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short != 'true'">
+                                    <iaixsl:attribute name="class"><![CDATA[omnibus_price]]></iaixsl:attribute>
+                                  </iaixsl:if>
+                                  <span class="omnibus_price__text"><iai:variable vid="Najniższa cena produktu w okresie 30 dni przed wprowadzeniem obniżki" />: </span>
+                                  <span class="omnibus_price__value">
+                                    <iaixsl:value-of select="$var_omnibus" />
+                                  </span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS-END -->
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </div>
+                        <iaixsl:if test="price/@unit_converted_price_formatted">
+                          <small class="s_unit_converted_price">
+                            <iaixsl:value-of select="price/@unit_converted_price_formatted" />
+                            <iaixsl:text><![CDATA[ / ]]></iaixsl:text>
+                            <iaixsl:value-of select="price/@unit_converted_format" />
+                            <span class="price_vat">
+                              <iaixsl:value-of select="$var_gross_prices" />
+                            </span>
+                          </small>
+                        </iaixsl:if>
+                      </iaixsl:when>
+
+                      <!-- CENA NETTO -->
+                      <iaixsl:otherwise>
+                        <!-- Dane wymagane - omnibus-short -->
+                        <!-- OMNIBUS-FALLBACK -->
+                        <iaixsl:variable name="var_size_min">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_min_net">
+                              <iaixsl:value-of select="product/sizes/prices/@size_min_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_min_net">
+                              <iaixsl:value-of select="sizes/prices/@size_min_net" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_net" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_max_net">
+                              <iaixsl:value-of select="product/sizes/prices/@size_max_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_max_net">
+                              <iaixsl:value-of select="sizes/prices/@size_max_net" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max_net" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_min_maxprice">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_maxprice_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_min_maxprice_net">
+                              <iaixsl:value-of select="product/sizes/prices/@size_min_maxprice_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_min_maxprice_net">
+                              <iaixsl:value-of select="sizes/prices/@size_min_maxprice_net" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_maxprice_net" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max_maxprice">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max_maxprice_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/prices/@size_max_maxprice_net">
+                              <iaixsl:value-of select="product/sizes/prices/@size_max_maxprice_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/prices/@size_max_maxprice_net">
+                              <iaixsl:value-of select="sizes/prices/@size_max_maxprice_net" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max_maxprice_net" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_maxprice">
+                          <iaixsl:choose>
+                            <iaixsl:when test="price/@maxprice_unit_net">
+                              <iaixsl:value-of select="price/@maxprice_unit_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/price/@maxprice_unit_net">
+                              <iaixsl:value-of select="product/price/@maxprice_unit_net" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/price/@maxprice_net">
+                              <iaixsl:value-of select="product/price/@maxprice_net" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@maxprice_net" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <!-- OMNIBUS-FALLBACK-END -->
+
+                        <iaixsl:variable name="var_size_min_net_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max_net_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_min_net_maxprice_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_maxprice_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_maxprice_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_size_max_maxprice_net_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_max_maxprice_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_max_maxprice_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_points_net">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@points" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@points" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <iaixsl:variable name="var_net_value">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@size_min_net" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@size_min_net" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <iaixsl:variable name="var_price_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="price/@price_unit_net_formatted and sizes/@unit">
+                              <iaixsl:value-of select="price/@price_unit_net_formatted" />
+                              <iaixsl:text><![CDATA[ / ]]></iaixsl:text>
+                              <iaixsl:value-of select="sizes/@unit_sellby" />
+                              <iaixsl:text> </iaixsl:text>
+                              <iaixsl:value-of select="sizes/@unit" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product/price/@price_unit_net_formatted and product/sizes/@unit">
+                              <iaixsl:value-of select="product/price/@price_unit_net_formatted" />
+                              <iaixsl:text><![CDATA[ / ]]></iaixsl:text>
+                              <iaixsl:value-of select="product/sizes/@unit_sellby" />
+                              <iaixsl:text> </iaixsl:text>
+                              <iaixsl:value-of select="product/sizes/@unit" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="$var_size_min_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <iaixsl:variable name="var_maxprice_net_formatted">
+                          <iaixsl:choose>
+                            <iaixsl:when test="price/@maxprice_unit_net_formatted">
+                              <iaixsl:value-of select="price/@maxprice_unit_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product/price/@maxprice_unit_net_formatted">
+                              <iaixsl:value-of select="product/price/@maxprice_unit_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@maxprice_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@maxprice_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- OMNIBUS -->
+                        <!-- Najniższa cena Omnibusa z listy rozmiarów -->
+                        <iaixsl:variable name="var_omnibus_min">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product and product/price/@min_omnibus_price_net_formatted">
+                              <iaixsl:value-of select="product/price/@min_omnibus_price_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="price/@min_omnibus_price_net_formatted">
+                              <iaixsl:value-of select="price/@min_omnibus_price_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/size/price">
+                              <iaixsl:for-each select="product/sizes/size[price/@omnibus_price_net]">
+                                <iaixsl:sort select="price/@omnibus_price_net" data-type="number" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_net_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@omnibus_price_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/size/price">
+                              <iaixsl:for-each select="sizes/size[price/@omnibus_price_net]">
+                                <iaixsl:sort select="price/@omnibus_price_net" data-type="number" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_net_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@omnibus_price_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- Najwyższa cena Omnibusa z listy rozmiarów -->
+                        <iaixsl:variable name="var_omnibus_max">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product and product/price/@max_omnibus_price_net_formatted">
+                              <iaixsl:value-of select="product/price/@max_omnibus_price_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="price/@max_omnibus_price_net_formatted">
+                              <iaixsl:value-of select="price/@max_omnibus_price_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="product and product/sizes/size/price">
+                              <iaixsl:for-each select="product/sizes/size[price/@omnibus_price_net]">
+                                <iaixsl:sort select="price/@omnibus_price_net" data-type="number" order="descending" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_net_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@omnibus_price_net_formatted" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/size/price">
+                              <iaixsl:for-each select="sizes/size[price/@omnibus_price_net]">
+                                <iaixsl:sort select="price/@omnibus_price_net" data-type="number" order="descending" />
+                                <iaixsl:if test="position() = 1">
+                                  <iaixsl:value-of select="price/@omnibus_price_net_formatted" />
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <iaixsl:value-of select="price/@omnibus_price_net_formatted" />
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- Cena lub przedział Omnibusa w zależności od tego czy najniższa i najwyższa cena Omnibusa są od siebie różne -->
+                        <iaixsl:variable name="var_omnibus">
+                          <iaixsl:if test="$var_omnibus_enabled = 'true'">
+                            <iaixsl:choose>
+                              <iaixsl:when test="$var_omnibus_min != $var_omnibus_max">
+                                <span>
+                                  <iaixsl:value-of select="$var_omnibus_min" />
+                                </span>
+                                <b>
+                                  <iaixsl:text><![CDATA[ - ]]></iaixsl:text>
+                                </b>
+                                <span>
+                                  <iaixsl:value-of select="$var_omnibus_max" />
+                                </span>
+                              </iaixsl:when>
+                              <iaixsl:when test="$var_omnibus_min != ''">
+                                <iaixsl:value-of select="$var_omnibus_min" />
+                              </iaixsl:when>
+                            </iaixsl:choose>
+                          </iaixsl:if>
+                        </iaixsl:variable>
+
+                        <!-- Zmienna przechowująca informację czy ma być wyświetlona skrócona wersja Omnibusa -->
+                        <iaixsl:variable name="var_omnibus_short">
+                          <iaixsl:if test="$var_omnibus_enabled = 'true'">
+                            <iaixsl:choose>
+                              <iaixsl:when test="$var_size_min_net_formatted != $var_size_max_net_formatted and $var_size_min_net_maxprice_formatted = $var_omnibus_min and $var_size_max_maxprice_net_formatted = $var_omnibus_max"><![CDATA[true]]></iaixsl:when>
+                              <iaixsl:when test="$var_maxprice_net_formatted = $var_omnibus"><![CDATA[true]]></iaixsl:when>
+                            </iaixsl:choose>
+                          </iaixsl:if>
+                        </iaixsl:variable>
+
+                        <!-- OMNIBUS-FALLBACK -->
+                        <!-- Zmienna przechowująca tablicę dat wszystkich rozmiarów w formacie [data; typ rozmiaru #separator# data; typ rozmiaru] -->
+                        <!-- Jeśli ilość rozmiarów jest mniejsza niż 1 lub rozmiary nie zawierają atrybutu z datą ostatniej zmiany ceny to zostanie użyta data z węzła /product/price -->
+                        <iaixsl:variable name="last_price_change_date">
+                          <iaixsl:choose>
+                            <iaixsl:when test="product and product/sizes/size/price and (count(product/sizes/size) &gt; 1)">
+                              <iaixsl:for-each select="product/sizes/size[price/@last_price_change_date]">
+                                <iaixsl:if test="@type and price/@last_price_change_date">
+                                  <iaixsl:value-of select="price/@last_price_change_date" /><![CDATA[;']]>
+                                  <iaixsl:value-of select="@type" /><![CDATA[']]>
+                                  <iaixsl:if test="not(position() = last())"><![CDATA[#separator#]]></iaixsl:if>
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="product">
+                              <iaixsl:value-of select="product/price/@last_price_change_date" />
+                            </iaixsl:when>
+                            <iaixsl:when test="sizes/size/price and (count(sizes/size) &gt; 1)">
+                              <iaixsl:for-each select="sizes/size[price/@last_price_change_date]">
+                                <iaixsl:if test="@type and price/@last_price_change_date">
+                                  <iaixsl:value-of select="price/@last_price_change_date" /><![CDATA[;']]>
+                                  <iaixsl:value-of select="@type" /><![CDATA[']]>
+                                  <iaixsl:if test="not(position() = last())"><![CDATA[#separator#]]></iaixsl:if>
+                                </iaixsl:if>
+                              </iaixsl:for-each>
+                            </iaixsl:when>
+                            <iaixsl:when test="price/@last_price_change_date">
+                              <iaixsl:value-of select="price/@last_price_change_date" />
+                            </iaixsl:when>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+
+                        <!-- Zmienna przechowująca informację czy fallback na bramkę GraphQL ma zostać uruchomiony -->
+                        <iaixsl:variable name="var_show_omnibus_short_fallback">
+                          <iaixsl:choose>
+                            <iaixsl:when test="($var_omnibus = '' and $var_omnibus_enabled = 'true' and not($last_price_change_date = ''))"><![CDATA[true]]></iaixsl:when>
+                          </iaixsl:choose>
+                        </iaixsl:variable>
+                        <!-- OMNIBUS-FALLBACK-END -->
+                        <!-- OMNIBUS-END -->
+
+                        <div class="product__prices">
+                          <iaixsl:if test="$var_omnibus != ''">
+                            <iaixsl:attribute name="class"><![CDATA[product__prices --omnibus]]>
+                              <iaixsl:if test="$var_omnibus_short = 'true'"><![CDATA[ --omnibus-short]]></iaixsl:if>
+                            </iaixsl:attribute>
+                          </iaixsl:if>
+
+                          <!-- OMNIBUS-FALLBACK -->
+                          <!-- Jeśli Omnibus z ceną nie jest zwracany w xmlu a dostępna jest data to zostaną dodane atrybuty wymagane dla mechanizmu fallbacku -->
+                          <iaixsl:if test="$var_show_omnibus_short_fallback = 'true'">
+
+                            <!-- Atrybut z datą ostatniej zmiany ceny -->
+                            <iaixsl:attribute name="data-last_price_change_date">
+                              <iaixsl:value-of select="$last_price_change_date" />
+                            </iaixsl:attribute>
+
+                            <!-- Atrybut z informacją dla mechanizmu fallbacku w jakim miejscu na stronie znajduje się atrybut z datą -->
+                            <!-- Wymagane do mapowania funkcji modyfikujących strukturę HTMLa i obsługujących wyświetlanie danych z bramki GraphQL -->
+                            <iaixsl:attribute name="data-omnibus-type"><![CDATA[hotspot]]></iaixsl:attribute>
+
+                            <!-- Atrybut z ID produktu -->
+                            <iaixsl:if test="product and product/@id">
+                              <iaixsl:attribute name="data-omnibus_product_id">
+                                <iaixsl:value-of select="product/@id" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_min">
+                              <iaixsl:attribute name="data-size_min">
+                                <iaixsl:value-of select="$var_size_min" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_max">
+                              <iaixsl:attribute name="data-size_max">
+                                <iaixsl:value-of select="$var_size_max" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_min_maxprice">
+                              <iaixsl:attribute name="data-size_min_maxprice">
+                                <iaixsl:value-of select="$var_size_min_maxprice" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_size_max_maxprice">
+                              <iaixsl:attribute name="data-size_max_maxprice">
+                                <iaixsl:value-of select="$var_size_max_maxprice" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+
+                            <!-- Wymagane do wyliczenia czy ma wyświetlić skróconą wersję Omnibusa -->
+                            <iaixsl:if test="$var_maxprice">
+                              <iaixsl:attribute name="data-maxprice">
+                                <iaixsl:value-of select="$var_maxprice" />
+                              </iaixsl:attribute>
+                            </iaixsl:if>
+                          </iaixsl:if>
+                          <!-- OMNIBUS-FALLBACK-END -->
+
+                          <iaixsl:choose>
+                            <!-- Zakres ceny od - do -->
+                            <iaixsl:when test="$var_size_min_net_formatted != $var_size_max_net_formatted">
+                              <iaixsl:if test="$var_size_min_net_maxprice_formatted != ''">
+                                <span class="price --max">
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_label --hidden"><iaixsl:if test="$var_omnibus_short != 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_label]]></iaixsl:attribute>
+                                      </iaixsl:if><iai:variable vid="Cena regularna" />: </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                  <del>
+                                    <span>
+                                      <iaixsl:value-of select="$var_size_min_net_maxprice_formatted" />
+                                    </span>
+                                    <b>
+                                      <iaixsl:text><![CDATA[ - ]]></iaixsl:text>
+                                    </b>
+                                    <span>
+                                      <iaixsl:value-of select="$var_size_max_maxprice_net_formatted" />
+                                    </span>
+                                    <span class="price_vat">
+                                      <iaixsl:value-of select="$var_net_prices" />
+                                    </span>
+                                  </del>
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short = 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_short --hidden">
+                                      <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short = 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_short]]></iaixsl:attribute>
+                                      </iaixsl:if>
+                                      <iai:variable vid="Najniższa cena z 30 dni przed obniżką" />
+                                    </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                </span>
+                              </iaixsl:if>
+                              <strong class="price">
+                                <iaixsl:value-of select="$var_size_min_net_formatted" />
+                                <iaixsl:text><![CDATA[ - ]]></iaixsl:text>
+                                <iaixsl:value-of select="$var_size_max_net_formatted" />
+                                <span class="price_vat">
+                                  <iaixsl:value-of select="$var_net_prices" />
+                                </span>
+                              </strong>
+                              <iaixsl:if test="$var_points_net != ''">
+                                <span class="price --points">
+                                  <iaixsl:value-of select="$var_points_net" />
+                                  <span class="currency">
+                                    <iai:variable vid="pkt" />.</span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS -->
+                              <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                <span class="omnibus_price --hidden">
+                                  <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short != 'true'">
+                                    <iaixsl:attribute name="class"><![CDATA[omnibus_price]]></iaixsl:attribute>
+                                  </iaixsl:if>
+                                  <span class="omnibus_price__text"><iai:variable vid="Najniższa cena produktu w okresie 30 dni przed wprowadzeniem obniżki" />: </span>
+                                  <span class="omnibus_price__value">
+                                    <iaixsl:value-of select="$var_omnibus" />
+                                  </span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS-END -->
+                            </iaixsl:when>
+
+                            <!-- Cena na telefon -->
+                            <iaixsl:when test="(($var_net_value = 0) and $var_points_net = '') or ($var_net_value = 0 and $var_b2b and not($var_b2b = '') and not(/shop/basket/@wholesaler = 'true'))">
+                              <iaixsl:choose>
+                                <iaixsl:when test="$var_b2b and not($var_b2b = '')">
+                                  <a class="price --phone" href="/signin.php">
+                                    <iaixsl:attribute name="title">
+                                      <iaixsl:value-of select="$var_b2b" />
+                                    </iaixsl:attribute>
+                                    <iaixsl:value-of select="$var_b2b" />
+                                  </a>
+                                </iaixsl:when>
+                                <iaixsl:otherwise>
+                                  <a class="price --phone" href="/contact.php">
+                                    <iaixsl:attribute name="title">
+                                      <iai:variable vid="Kliknij, by przejść do formularza kontaktu" />
+                                    </iaixsl:attribute>
+                                    <iai:variable vid="Cena na telefon" />
+                                  </a>
+                                </iaixsl:otherwise>
+                              </iaixsl:choose>
+                            </iaixsl:when>
+
+                            <!-- Domyślna cena -->
+                            <iaixsl:otherwise>
+                              <iaixsl:if test="$var_maxprice_net_formatted != ''">
+                                <span class="price --max">
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_label --hidden"><iaixsl:if test="$var_omnibus_short != 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_label]]></iaixsl:attribute>
+                                      </iaixsl:if><iai:variable vid="Cena regularna" />: </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                  <del>
+                                    <iaixsl:value-of select="$var_maxprice_net_formatted" />
+                                    <span class="price_vat">
+                                      <iaixsl:value-of select="$var_net_prices" />
+                                    </span>
+                                  </del>
+                                  <!-- OMNIBUS -->
+                                  <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short = 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                    <span class="omnibus_short --hidden">
+                                      <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short = 'true'">
+                                        <iaixsl:attribute name="class"><![CDATA[omnibus_short]]></iaixsl:attribute>
+                                      </iaixsl:if>
+                                      <iai:variable vid="Najniższa cena z 30 dni przed obniżką" />
+                                    </span>
+                                  </iaixsl:if>
+                                  <!-- OMNIBUS-END -->
+                                </span>
+                              </iaixsl:if>
+                              <strong class="price">
+                                <iaixsl:value-of select="$var_price_formatted" />
+                                <span class="price_vat">
+                                  <iaixsl:value-of select="$var_net_prices" />
+                                </span>
+                              </strong>
+                              <iaixsl:if test="$var_points_net != ''">
+                                <span class="price --points">
+                                  <iaixsl:value-of select="$var_points_net" />
+                                  <span class="currency">
+                                    <iai:variable vid="pkt" />.</span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS -->
+                              <iaixsl:if test="($var_omnibus != '' and $var_omnibus_short != 'true') or ($var_show_omnibus_short_fallback = 'true')">
+                                <span class="omnibus_price --hidden">
+                                  <iaixsl:if test="$var_omnibus != '' and $var_omnibus_short != 'true'">
+                                    <iaixsl:attribute name="class"><![CDATA[omnibus_price]]></iaixsl:attribute>
+                                  </iaixsl:if>
+                                  <span class="omnibus_price__text"><iai:variable vid="Najniższa cena produktu w okresie 30 dni przed wprowadzeniem obniżki" />: </span>
+                                  <span class="omnibus_price__value">
+                                    <iaixsl:value-of select="$var_omnibus" />
+                                  </span>
+                                </span>
+                              </iaixsl:if>
+                              <!-- OMNIBUS-END -->
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                          <iaixsl:if test="price/@unit_converted_price_net_formatted">
+                            <small class="s_unit_converted_price">
+                              <iaixsl:value-of select="price/@unit_converted_price_net_formatted" />
+                              <iaixsl:text><![CDATA[ / ]]></iaixsl:text>
+                              <iaixsl:value-of select="price/@unit_converted_format" />
+                              <span class="price_vat">
+                                <iaixsl:value-of select="$var_net_prices" />
+                              </span>
+                            </small>
+                          </iaixsl:if>
+                        </div>
+                      </iaixsl:otherwise>
+                    </iaixsl:choose>
+                  </div>
+                  <div class="product__summary">
+                    <div class="product__summary_wrapper">
+                      <!--Dodawanie
+                      do koszyka-->
+                      <div class="product__details add_to_basket__wrapper">
+                        <iaixsl:choose>
+                          <iaixsl:when test="sizes/size/availability/@status != 'disable'">
+                            <iaixsl:if test="sizes/size/@type = 'uniw' or count(sizes/size) >= 1">
+                              <iaixsl:attribute name="data-id">
+                                <iaixsl:value-of select="@id" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="data-amount">
+                                <iaixsl:value-of select="sizes/size[1]/@amount" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="data-quantity">1</iaixsl:attribute>
+                              <iaixsl:attribute name="data-unit_sellby">
+                                <iaixsl:value-of select="sizes/@unit_sellby" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="data-size">
+                                <iaixsl:value-of select="sizes/size/@type" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="data-unit">
+                                <iaixsl:value-of select="sizes/@unit" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="data-unit_precision">
+                                <iaixsl:value-of select="sizes/@unit_precision" />
+                              </iaixsl:attribute>
+                              <iaixsl:attribute name="data-sold_out">
+                                <iaixsl:if test="sizes/size[1]/@amount = 0">
+                                  yes
+                                </iaixsl:if>
+                              </iaixsl:attribute>
+
+                              <iaixsl:choose>
+                                <iaixsl:when test="sizes/size[1]/@amount = 0">
+                                  <span class="btn --solid --large sold-out">
+                                    <iai:variable vid="Wyprzedane" />
+                                  </span>
+                                </iaixsl:when>
+                                <iaixsl:otherwise>
+                                  <iaixsl:choose>
+                                    <iaixsl:when test="@product_type = 'product_bundle'">
+                                      <iaixsl:attribute name="class"><![CDATA[product__details go_to_product__wrapper mt-3 mt-md-0]]></iaixsl:attribute>
+                                      <a class="go_to_product_btn btn --solid --large">
+                                        <iaixsl:attribute name="href">
+                                          <iaixsl:value-of select="@link" />
+                                        </iaixsl:attribute>
+                                        <iai:variable vid="Szczegóły" />
+                                      </a>
+                                    </iaixsl:when>
+                                    <iaixsl:otherwise>
+                                      <input type="hidden" name="number">
+                                        <iaixsl:attribute name="value">
+                                          <iaixsl:value-of select="sizes/@unit_sellby" />
+                                        </iaixsl:attribute>
+                                      </input>
+                                      <a href="#add_to_basket" class="add_to_basket_btn btn --solid --large">
+                                        <iai:variable vid="Do koszyka" />
+                                      </a>
+                                    </iaixsl:otherwise>
+                                  </iaixsl:choose>
+                                </iaixsl:otherwise>
+                              </iaixsl:choose>
+
+                            </iaixsl:if>
+                          </iaixsl:when>
+                          <iaixsl:otherwise>
+                            <iaixsl:attribute name="class"><![CDATA[product__details go_to_product__wrapper]]></iaixsl:attribute>
+                            <a class="go_to_product_btn">
+                              <iaixsl:attribute name="href">
+                                <iaixsl:value-of select="@link" />
+                              </iaixsl:attribute>
+                            </a>
+                          </iaixsl:otherwise>
+                        </iaixsl:choose>
+                      </div>
+
+                      <!-- DO PORÓWNANIA -->
+                      <div class="product__compare">
+                        <iaixsl:variable name="addcompare_txt">
+                          <iai:variable vid="Porównaj" />
+                        </iaixsl:variable>
+                        <iaixsl:if test="$addcompare_txt">
+                          <iaixsl:attribute name="class"><![CDATA[product__compare --has-child]]></iaixsl:attribute>
+
+                          <iaixsl:choose>
+                            <iaixsl:when test="@id = /shop/compare/product/@id">
+                              <a class="product__compare_item --remove btn" rel="nofollow">
+                                <iaixsl:attribute name="href">
+                                  <iaixsl:choose>
+                                    <iaixsl:when test="/shop/action/settings/@url">
+                                      <iaixsl:value-of select="/shop/action/settings/@url" />
+                                    </iaixsl:when>
+                                    <iaixsl:otherwise><![CDATA[settings.php]]></iaixsl:otherwise>
+                                  </iaixsl:choose><![CDATA[?comparers=remove&amp;product=]]>
+                                  <iaixsl:value-of select="@id" />
+                                </iaixsl:attribute>
+																	<iaixsl:attribute name="title">
+                                  <iai:variable vid="Kliknij, aby usunąć produkt z porównywarki" />
+                                </iaixsl:attribute> - <iai:variable vid="Usuń z porównania" />
+                              </a>
+                            </iaixsl:when>
+                            <iaixsl:otherwise>
+                              <a class="product__compare_item --add btn" rel="nofollow">
+                                <iaixsl:attribute name="href">
+                                  <iaixsl:choose>
+                                    <iaixsl:when test="/shop/action/settings/@url">
+                                      <iaixsl:value-of select="/shop/action/settings/@url" />
+                                    </iaixsl:when>
+                                    <iaixsl:otherwise><![CDATA[settings.php]]></iaixsl:otherwise>
+                                  </iaixsl:choose><![CDATA[?comparers=add&amp;product=]]>
+                                  <iaixsl:value-of select="@id" />
+                                </iaixsl:attribute>
+                                <iaixsl:attribute name="title">
+                                  <iai:variable vid="Kliknij, aby dodać produkt do porównania" />
+                                </iaixsl:attribute>
+                                <iaixsl:value-of select="$addcompare_txt" />
+                              </a>
+                            </iaixsl:otherwise>
+                          </iaixsl:choose>
+                        </iaixsl:if>
+                      </div>
+                    </div>
+
+                    <!--Licznik
+                    ile pozostało produktu w promocji-->
+                    <div class="product_timer_strip">
+                      <iaixsl:attribute name="data-amount">
+                        <iaixsl:value-of select="sizes/size/@amount" />
+                      </iaixsl:attribute>
+                      <iaixsl:attribute name="data-init-amount">
+                        <iaixsl:value-of select="traits/trait[@groupid='12634']/@traitlongdescription" />
+                      </iaixsl:attribute>
+
+                      <div class="sold_out_info">
+                        <iai:variable vid="Towar wyprzedany" />
+                      </div>
+                      <div class="ptsr_value">
+                        <div class="ptsr_value_fill"></div>
+                      </div>
+                      <div class="ptsr_label">
+                        <iai:variable vid="Pozostało" />
+                        <span id="pts_remaining">
+                          <span id="pts_curr">
+                            <iaixsl:value-of select="sizes/size/@amount" />
+                          </span>
+                          <span id="pts_total">
+                            <iai:variable vid="z" />
+                            <iaixsl:value-of select="traits/trait[@groupid='12634']/@traitlongdescription" />
+                            <iai:variable vid="szt." />
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </iaixsl:if>
+          </iaixsl:for-each>
+        </div>
+      </iaixsl:when>
+      <iaixsl:otherwise>
+        <div class="hotspot mb-5 skeleton">
+          <span class="headline" />
+          <div class="products d-flex flex-wrap">
+            <div class="product">
+              <span class="product__icon d-flex justify-content-center align-items-center" />
+              <span class="product__name" />
+              <div class="product__prices" />
+            </div>
+          </div>
+        </div>
+      </iaixsl:otherwise>
+    </iaixsl:choose>
+  </section>
+</iaixsl:if>
+
+<iaixsl:if test="/shop/hotspot/products_zone1/product/comments/@id"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/@hotspot_ajax"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/sizes/size/availability/@id"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/category/@id"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/opinion"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/@version_name"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/firm/@name"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/traits/@id"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/price/@price_formatted"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/price/@detalprice_net_formatted"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/price/@price_formatted"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/price/@price_net_formatted"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/price/@value=0"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/price/@maxprice_net_formatted"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/product/description"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/@iairs_ajax"> </iaixsl:if>
+<iaixsl:if test="/shop/hotspot/products_zone1/@cache_html"> </iaixsl:if>
+<iaiajaxend />
+
+<!--hotspot
+zone1 end-->

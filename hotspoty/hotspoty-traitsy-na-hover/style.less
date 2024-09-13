@@ -1,0 +1,51 @@
+@keyframes appear {
+  from {opacity:0;}
+  to {opacity:1}
+}
+@keyframes vanish { 
+  from {opacity: 1; display:block}
+  to {opacity:0; display: none}
+}
+
+#search, #search .product, .hotspot__wrapper {
+	&:hover {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+
+.product {
+	position: relative;
+	padding: 1.6rem 0;
+
+	&__traits {
+	  list-style: none;
+	  position: absolute;
+	  top: 100%;
+	  width: 100%;
+	  background: @less_iaicolorscheme_background_color;
+	  display: none;
+	  animation: vanish 0.25s;
+	}
+	&:hover {
+	  .product__traits {
+	    display: block;
+	    animation: appear 0.25s;
+	  }
+	}
+	
+	ul {
+	  .trait {
+	    display: grid;
+	    grid-template-columns: repeat(2, 1fr);
+	    line-height: 20px;
+  	  &__name {
+  	    font-weight: 600;
+  	  }
+  	  &__values a {
+  	    text-decoration: none;
+  	  }
+	  }
+	}
+}

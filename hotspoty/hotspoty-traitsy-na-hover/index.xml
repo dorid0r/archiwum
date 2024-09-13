@@ -1,0 +1,24 @@
+	<!-- PARAMETRY -->
+	<iaixsl:variable name="forbiddenIds">;2052;81;</iaixsl:variable> 
+	<!-- ; przed i po kazdym ID -> ;1;2;3;4;5;123;1231231;111; -->
+	<iaixsl:if test="not($param_search)">
+		<iaixsl:if test="traits/trait[not(@gfx)] and traits/trait[not(contains(@groupdescription, 'gs1:'))] and traits/trait[not(contains($forbiddenIds, concat(';', @groupid, ';')))]">
+				<div class="product__traits">
+					<ul>
+						<iaixsl:for-each select="traits/trait[not(@gfx)]">
+							<iaixsl:if test="not(@groupid = preceding-sibling::trait/@groupid) and not(contains(@groupdescription, 'gs1:')) and not(contains($forbiddenIds, concat(';', @groupid, ';')))">
+								<li class="trait">
+									<span class="trait__name"><iaixsl:value-of select="@groupdescription"/>: </span>
+									<span class="trait__values">
+										<a class="trait__value" href="{@link}"><iaixsl:value-of select="@traitdescription"/></a>
+										<iaixsl:if test="@groupid = following-sibling::trait/@groupid">
+											<iaixsl:variable name="temporaryGroup"><iaixsl:value-of select="@groupid"/></iaixsl:variable><iaixsl:for-each select="following-sibling::trait[(@groupid = $temporaryGroup)]">, <a class="trait__value" href="{@link}"><iaixsl:value-of select="@traitdescription"/></a></iaixsl:for-each>
+										</iaixsl:if>
+									</span>
+								</li>
+							</iaixsl:if>
+						</iaixsl:for-each>
+					</ul>
+				</div>
+		</iaixsl:if>
+	</iaixsl:if>
