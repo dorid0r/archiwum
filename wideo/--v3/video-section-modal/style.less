@@ -1,0 +1,117 @@
+.video_button {
+  margin-bottom: 2rem;
+  @media @laptop {
+    margin-bottom: 4rem;
+  }
+  &__list {
+    display: flex;
+    overflow: auto;
+    padding-bottom: 2rem;
+    gap: 2rem;
+    @media @laptop {
+      overflow: hidden;
+      &:not(.slick-initialized) {
+        .video_button__item:nth-of-type(4) {
+        & ~ .video_button__item {
+          display: none;
+        }
+      }
+      }
+    }
+  }
+  &__item {
+    flex: 1 0 75%;
+    max-width: 75%;
+    @media @laptop {
+      max-width: unset;
+      flex: 1;
+    }
+  }
+  &__title {
+    .font_headline();
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.4rem;
+    padding: 1rem 0;
+  }
+  .slick-list {
+    margin: 0 -1rem;
+  }
+  .slick-slide {
+    margin: 0 1rem;
+  }
+  .slick-disabled {
+    display: none !important;
+  }
+}
+.video {
+  position: relative;
+  aspect-ratio: 335 / 215;
+   &:hover {
+      .video__button-wrapp {
+        background: @color_green;
+        color: @color_white;
+      }
+    }
+  &__frame {
+    width: 100%;
+    height: 100%;
+    max-width: unset;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  &__button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+  &__button-wrapp {
+     width: 40px;
+    height: 40px;
+    background: @color_white;
+    color: @text_color;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.2s background, 0.2s color;
+    cursor: pointer;
+  }
+  .tri:before {
+    content: '\e8c9';
+    font-family: fontawesome;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-43%, -50%);
+  }
+}
+
+.modal.yt_modal {
+  margin: 0 0;
+  .modal__wrapper {
+    max-width: 900px;
+    height: 90vh;
+    max-height: 800px;
+  }
+  .modal {
+    &__content {
+      height: 100%;
+      iframe {
+        width: 100%;
+      }
+    }
+  }
+  @media @laptop {
+    .modal {
+      &__wrapper {
+        max-width: 1400px;
+      }
+    }
+  }
+}

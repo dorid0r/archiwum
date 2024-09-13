@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><iai:component><iai:componentsdata><cdata-start/>
+  <iaixsl:variable name="yt_account">kettlersport_pl</iaixsl:variable>
+  <iaixsl:variable name="cms_link"></iaixsl:variable>
+  <iaixsl:variable name="yt_headline"><iai:variable vid="Strefa video" /></iaixsl:variable> 
+  <iaixsl:variable name="show_description">true</iaixsl:variable> 
+	<iaixsl:if test="commercial_button2/link/html">
+		<div id="video_button" class="video_button">
+      <h3>
+        <iaixsl:choose>
+          <iaixsl:when test="$yt_account != ''">
+            <a class="headline" rel="nofollow">
+              <iaixsl:attribute name="href">https://www.youtube.com/@<iaixsl:value-of select="$yt_account"/></iaixsl:attribute>
+              <iaixsl:attribute name="target"><![CDATA[_blank]]></iaixsl:attribute>
+              <iaixsl:attribute name="title"><iaixsl:value-of select="$yt_headline"/></iaixsl:attribute>
+              <iaixsl:value-of select="$yt_headline"/>
+            </a>
+          </iaixsl:when>
+          <iaixsl:when test="$cms_link != ''">
+            <a class="headline">
+              <iaixsl:attribute name="href"><iaixsl:value-of select="$cms_link"/></iaixsl:attribute>
+              <iaixsl:attribute name="title"><iaixsl:value-of select="$yt_headline"/></iaixsl:attribute>
+              <iaixsl:value-of select="$yt_headline"/>
+            </a>
+          </iaixsl:when>
+          <iaixsl:otherwise>
+            <span class="headline">
+              <iaixsl:value-of select="$yt_headline"/>
+            </span>
+          </iaixsl:otherwise>
+        </iaixsl:choose>
+      </h3>
+      <div class="video_button__list">
+        <iaixsl:attribute name="data-count"><iaixsl:value-of select="count(commercial_button2/link/html)"/></iaixsl:attribute>
+        <iaixsl:for-each select="commercial_button2/link">
+          <iaixsl:if test="html">
+            <div class="video_button__item">
+              <div class="video">
+                <iaixsl:attribute name="data-video-id">https://www.youtube.com/embed/<iaixsl:value-of disable-output-escaping="yes" select="html"/></iaixsl:attribute>
+                <img class="video__frame player" loading="lazy" src="https://i.ytimg.com/vi_webp/IzFvVvV9KyY/maxresdefault.webp" alt="Video Youtube">
+                  <iaixsl:attribute name="src">https://i.ytimg.com/vi_webp/<iaixsl:value-of disable-output-escaping="yes" select="html"/>/maxresdefault.webp</iaixsl:attribute>
+                  <iaixsl:attribute name="alt"><iaixsl:value-of select="text"/></iaixsl:attribute>
+                </img>
+                <div class="video__button">
+                  <div class="video__button-wrapp">
+                      <div class="tri"></div>
+                  </div>
+                </div>
+              </div>
+              <iaixsl:if test="$show_description != ''">
+                <div class="video_button__title"><iaixsl:value-of select="html/@title"/></div>
+              </iaixsl:if>
+            </div>
+          </iaixsl:if>
+        </iaixsl:for-each>
+      </div>
+		</div>
+	</iaixsl:if>
+<cdata-end/></iai:componentsdata></iai:component>
