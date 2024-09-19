@@ -2,14 +2,15 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 	constructor(params) {
 		super(params);
 		this.selector = params.selector || '#search';
-		this.products = [];
+		this.productsArray = [];
 	}
 
 	init() {
 		this.productListElement = document.querySelector(this.selector);
 		if (!this.productListElement) return;
 
-		this.products.push(...this.getProducts());
+		this.products = this.getProducts();
+		this.productsArray.push(...this.getProducts());
 		this.hotspotData = { products: this.products };
 		this.hotspotElement = this.productListElement;
 
@@ -19,15 +20,10 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 	}
 
 	getProducts() {
-		const productElements = [...this.productListElement.querySelectorAll('.product')];
+		const productElements = [...this.productListElement.querySelectorAll(`.product:not(.${this.prefix})`)];
 		return productElements
 			.map(productElement => {
 				const id = productElement.dataset.product_id;
-
-				if (this.products.some(product => product.id === id)) {
-					return null;
-				}
-
 				const form = productElement.querySelector('.add_to_basket');
 				if (!form) return null;
 
@@ -67,14 +63,7 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 	}
 
 	setForms() {
-		this.forms = this.products
-			.filter(
-				productData =>
-					!this.productListElement
-						.querySelector(`.product[data-product_id="${productData.id}"]`)
-						.classList.contains('form-set')
-			)
-			.map(productData => this.setForm(productData));
+		this.forms = this.products.map(productData => this.setForm(productData));
 	}
 
 	setForm(productData) {
@@ -83,14 +72,12 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 
 		const productElement = this.productListElement.querySelector(`.product[data-product_id="${productData.id}"]`);
 		if (!productElement) return false;
-
 		this.activeTemplate = productElement.querySelector('.add_to_basket');
 		if (!this.activeTemplate) return false;
 
-		productElement.classList.add('form-set');
-
 		this.setformValues();
 
+		productElement.classList?.add(this.prefix);
 		return { productData, formElement: this.activeTemplate };
 	}
 
@@ -101,7 +88,7 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 	}
 
 	validateNumber(quantity, productId) {
-		const productData = this.products.find(el => el?.id === productId);
+		const productData = this.productsArray.find(el => el?.id === productId);
 		if (typeof quantity !== 'number' || !productData) return 1;
 
 		const { plural, singular, sellBy, precision } = productData?.unit;
@@ -132,18 +119,14 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 
 	setEvents() {
 		this.forms.forEach(({ formElement }) => {
-			if (!formElement.classList.contains('events-set')) {
-				const button = formElement?.querySelector('.add_to_basket__button');
-				if (button) {
-					button.addEventListener('click', async e => {
-						e.preventDefault();
-						const form = e.target.closest('form');
-						if (!form) return false;
-						await this.addToBasket(new FormData(form), e.target.closest('button') || e.target);
-					});
-
-					formElement.classList.add('events-set');
-				}
+			const button = formElement?.querySelector('.add_to_basket__button');
+			if (button) {
+				button.addEventListener('click', async e => {
+					e.preventDefault();
+					const form = e.target.closest('form');
+					if (!form) return false;
+					await this.addToBasket(new FormData(form), e.target.closest('button') || e.target);
+				});
 			}
 		});
 	}
