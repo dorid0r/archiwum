@@ -23,6 +23,11 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 		return productElements
 			.map(productElement => {
 				const id = productElement.dataset.product_id;
+
+				if (this.products.some(product => product.id === id)) {
+					return null;
+				}
+
 				const form = productElement.querySelector('.add_to_basket');
 				if (!form) return null;
 
@@ -62,7 +67,14 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 	}
 
 	setForms() {
-		this.forms = this.products.map(productData => this.setForm(productData));
+		this.forms = this.products
+			.filter(
+				productData =>
+					!this.productListElement
+						.querySelector(`.product[data-product_id="${productData.id}"]`)
+						.classList.contains('form-set')
+			)
+			.map(productData => this.setForm(productData));
 	}
 
 	setForm(productData) {
@@ -74,6 +86,8 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 
 		this.activeTemplate = productElement.querySelector('.add_to_basket');
 		if (!this.activeTemplate) return false;
+
+		productElement.classList.add('form-set');
 
 		this.setformValues();
 
@@ -106,7 +120,7 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 		);
 	}
 
-	setDropdown(searchElement) {
+	setDropdown() {
 		this.numberBySelect = new NumberBySelect({
 			selectClass: `${this.selector} .add_to_basket__number:not(.f-dropdown)`,
 			inputClass: `${this.selector} .add_to_basket__more_input`,
@@ -118,14 +132,18 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 
 	setEvents() {
 		this.forms.forEach(({ formElement }) => {
-			const button = formElement?.querySelector('.add_to_basket__button');
-			if (button) {
-				button.addEventListener('click', async e => {
-					e.preventDefault();
-					const form = e.target.closest('form');
-					if (!form) return false;
-					await this.addToBasket(new FormData(form), e.target.closest('button') || e.target);
-				});
+			if (!formElement.classList.contains('events-set')) {
+				const button = formElement?.querySelector('.add_to_basket__button');
+				if (button) {
+					button.addEventListener('click', async e => {
+						e.preventDefault();
+						const form = e.target.closest('form');
+						if (!form) return false;
+						await this.addToBasket(new FormData(form), e.target.closest('button') || e.target);
+					});
+
+					formElement.classList.add('events-set');
+				}
 			}
 		});
 	}
