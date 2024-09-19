@@ -10,7 +10,7 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 		if (!this.productListElement) return;
 
 		this.products = this.getProducts();
-		this.productsArray.push(...this.getProducts());
+		this.productsArray.push(...this.products);
 
 		this.setForms();
 		this.setDropdown();
