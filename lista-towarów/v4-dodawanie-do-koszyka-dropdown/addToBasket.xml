@@ -25,26 +25,26 @@
                 </input>
                 <div class="add_to_basket__number_wrapper">
                     <select class="add_to_basket__number f-select" tabindex="-1">
-                        <option>
-                            <iaixsl:attribute name="value">><iaixsl:value-of select="sizes/@unit_sellby * 1"/></iaixsl:attribute>
-                            <iaixsl:value-of select="sizes/@unit_sellby * 1"/>
-                        </option>
-                        <option>
-                            <iaixsl:attribute name="value"><iaixsl:value-of select="sizes/@unit_sellby * 2"/></iaixsl:attribute>
-                            <iaixsl:value-of select="sizes/@unit_sellby * 2"/>
-                        </option>
-                        <option>
-                            <iaixsl:attribute name="value"><iaixsl:value-of select="sizes/@unit_sellby * 3"/></iaixsl:attribute>
-                            <iaixsl:value-of select="sizes/@unit_sellby * 3"/>
-                        </option>
-                        <option>
-                            <iaixsl:attribute name="value"><iaixsl:value-of select="sizes/@unit_sellby * 4"/></iaixsl:attribute>
-                            <iaixsl:value-of select="sizes/@unit_sellby * 4"/>
-                        </option>
-                        <option>
-                            <iaixsl:attribute name="value"><iaixsl:value-of select="sizes/@unit_sellby * 5"/></iaixsl:attribute>
-                            <iaixsl:value-of select="sizes/@unit_sellby * 5"/>
-                        </option>
+        				<option>
+        					<iaixsl:attribute name="value"><iaixsl:value-of select="1"/></iaixsl:attribute>
+        					<iaixsl:value-of select="1"/>
+        				</option>
+        				<option>
+        					<iaixsl:attribute name="value"><iaixsl:value-of select="2"/></iaixsl:attribute>
+        					<iaixsl:value-of select="2"/>
+        				</option>
+        				<option>
+        					<iaixsl:attribute name="value"><iaixsl:value-of select="3"/></iaixsl:attribute>
+        					<iaixsl:value-of select="3"/>
+        				</option>
+        				<option>
+        					<iaixsl:attribute name="value"><iaixsl:value-of select="4"/></iaixsl:attribute>
+        					<iaixsl:value-of select="4"/>
+        				</option>
+        				<option>
+        					<iaixsl:attribute name="value"><iaixsl:value-of select="5"/></iaixsl:attribute>
+        					<iaixsl:value-of select="5"/>
+        				</option>
                         <option>
                             <iaixsl:attribute name="data-more">true</iaixsl:attribute>
                             <iai:variable vid="więcej"/>
