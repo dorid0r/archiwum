@@ -5,7 +5,7 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 		this.products = [];
 	}
 
-	init(searchElement) {
+	init() {
 		this.productListElement = searchElement || document.querySelector(this.selector);
 		if (!this.productListElement) return;
 
