@@ -67,8 +67,8 @@ function ProductBuy(selector) {
     return queryGraphQL;
   };
 
-  this.fetchData = async (currentProductID) => {
-    document.querySelector(`.product__buy_button[data-id="${currentProductID}"]`).classList.add('--loading');
+  this.fetchData = async (productSelector, currentProductID) => {
+    productSelector.querySelector(`.product__buy_button[data-id="${currentProductID}"]`).classList.add('--loading');
 
     try {
       const response = await fetch(
@@ -92,9 +92,9 @@ function ProductBuy(selector) {
   };
 
   this.getInfo = async (productSelector, currentProductID) => {
-    await this.fetchData(currentProductID).then((response) => {
+    await this.fetchData(productSelector, currentProductID).then((response) => {
       const responseData = response?.data?.addProductsToBasket || {};
-      document
+      productSelector
         .querySelector(`.product__buy_button[data-id="${currentProductID}"]`).classList.remove('--loading');
 
       if (!responseData || responseData.status !== 'success' || responseData.results[0].error !== null || responseData.results[0].status === 'error') {
