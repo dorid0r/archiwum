@@ -72,7 +72,7 @@ function ProductBuy(selector) {
       section.classList.add('--updated');
 
       const fetchData = async () => {
-        document.querySelector(`.product_buy__button[data-id="${currentProductID}"]`).classList.add('--loading');
+        section.querySelector(`.product_buy__button[data-id="${currentProductID}"]`).classList.add('--loading');
 
         try {
           const response = await fetch(
@@ -97,7 +97,7 @@ function ProductBuy(selector) {
       const getInfo = async () => {
         await fetchData().then((response) => {
           const responseData = response?.data?.addProductsToBasket || {};
-          document
+          section
             .querySelector(`.product_buy__button[data-id="${currentProductID}"]`).classList.remove('--loading');
 
           if (!responseData || responseData.status !== 'success' || responseData.results[0].error !== null || responseData.results[0].status === 'error') {
