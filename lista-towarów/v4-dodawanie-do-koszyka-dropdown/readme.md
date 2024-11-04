@@ -4,11 +4,11 @@
 
 ## Jak prawidłowo zaimplementować w.w funkcjonalność
 
-1. Composer: `Układ -> Stopka` w komponencie `Hotspoty dodawanie do koszyka` w zakładce Wydzielony Javascript, na dole kodu należy umieścić kod z pliku addToBasket.js
+1. Composer: `Lista produktów` w komponencie `Normalny widok` w zakładce Wydzielony Javascript, należy umieścić kod z pliku addToBasket.js. Ustawić kolejność ładowania wydzielonego kodu JavaScript na `Stopka`
 2. Composer: `Lista produktów` w komponencie `Normalny widok` w zakładce `XML/XSLT` należy umieścić kod z pliku addToBasket.xml
 
 ## Wyłowanie
-Wywołanie należy umieścić w Composer: `Układ -> Stopka` w komponencie `Hotspoty dodawanie do koszyka` w zakładce Wydzielony Javascript
+Wywołanie należy umieścić w Composer: `Lista produktów` w komponencie `Normalny widok` w zakładce Wydzielony Javascript
 
 ```js
 app_shop.run(() => {
