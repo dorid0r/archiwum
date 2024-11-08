@@ -62,7 +62,7 @@
             </form>
         </iaixsl:when>
         <iaixsl:otherwise>
-            <a class="btn --solid --medium add_to_basket__link" tabindex="-1" href="{@id}">
+            <a class="btn --solid --medium add_to_basket__link" tabindex="-1" href="{@link}">
                 <iaixsl:attribute name="title"><iai:variable vid="Więcej opcji"/></iaixsl:attribute>
                 <iai:variable vid="Więcej opcji"/>
             </a>
