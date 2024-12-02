@@ -17,42 +17,31 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
 		this.setEvents();
 	}
 
-	getProducts() {
-		const products = this.productListElement.querySelectorAll(`.product:not(.${this.prefix})`);
-		const result = [];
-		for (const product of products) {
-			const form = product.querySelector('.add_to_basket');
-			if (!form) continue;
 
-			const id = product.dataset.product_id;
-			const size = form.querySelector('input[name="size"]')?.value || 'uniw';
-			const inputData = form.querySelector('input[name="product"]');
-
-			if (!inputData) continue;
-
-			const productData = {
-				id,
-				sizes: [
-					{
-						size,
-						availability: { status: 'available' },
-						amount: parseFloat(inputData.dataset.amount),
-					},
-				],
-				unit: {
-					sellBy: parseFloat(inputData.dataset.sellby),
-					singular: inputData.dataset.singular,
-					plural: inputData.dataset.plural,
-					precision: parseInt(inputData.dataset.unitPrecision),
-				},
-				link: product.href ?? '',
-				type: 'product',
-			};
-
-			result.push(productData);
-		}
-		return result;
-	}
+    getProducts() {
+        const inputs = this.productListElement.querySelectorAll(`.product:not(.${this.prefix}) .add_to_basket input[name="product"]`);
+            
+        const result = [];
+        for (const input of inputs) {
+              const {id, size, availability, amount, sellby, singular, plural, unitPrecision } = input.dataset;
+              result.push({
+                          id,
+                          type: 'product',
+                          sizes: [{
+                              size,
+                              availability: { status: availability },
+                              amount: parseFloat(amount),
+                          }],
+                          unit: {
+                              sellBy: parseFloat(sellby),
+                              singular: singular,
+                              plural: plural,
+                              precision: parseInt(unitPrecision),
+                          },
+                      });
+            }
+        return result;
+    }
 
 	setForms() {
 		this.forms = this.products.map(productData => this.setForm(productData));
