@@ -1,28 +1,26 @@
-<div class="product_buy_section">
+
     <iaixsl:choose>
       <iaixsl:when test="(@product_type = 'product_item' or @product_type = 'virtual') and not(sizes[size/@type != 'uniw']) and (not(sizes/prices/@minprice_net = 0) or not(sizes/prices/@minprice = 0))">
-            <form class="add_to_basket product_buy_section" action="/basketchange.php" method="post"
-                data-availability-status="{sizes/availability/@status}" 
+            <form class="add_to_basket product_buy_section" action="/basketchange.php" method="post"                
                 data-product-type="{@product_type}">
-                <iaixsl:if test="not(sizes/size[availability/@status != 'disable'])">
-                    <iaixsl:attribute name="class"><![CDATA[add_to_basket --disabled]]></iaixsl:attribute>
-                </iaixsl:if>
-                <iaixsl:if test="not(@product_type = 'product_item')">
-                    <iaixsl:attribute name="class"><![CDATA[add_to_basket --virtual]]></iaixsl:attribute>
-                </iaixsl:if>
+                <iaixsl:attribute name="class"><![CDATA[add_to_basket]]>
+                        <iaixsl:if test="not(sizes/size[availability/@status != 'disable'])"><![CDATA[ --disabled]]></iaixsl:if>
+                        <iaixsl:if test="@product_type = 'virtual'"><![CDATA[ --virtual]]></iaixsl:if>
+                </iaixsl:attribute>
                 <input name="mode" type="hidden" value="1" />
                 <input name="product" type="hidden" 
                 value="{@id}" 
                 data-sellby="{sizes/@unit_sellby}" 
                 data-id="{@id}" 
                 data-amount="{sizes/size/@amount}" 
-                data-size="{sizes/size[availability/@status != 'disable'][1]/@type}"
+                data-size="{sizes/size[availability/@status != 'disable']/@type}"
                 data-unit="{sizes/@unit}" 
                 data-singular="{sizes/@unit_single}" 
                 data-plural="{/sizes/@unit_plural}" 
                 data-unit_precision="{sizes/@unit_precision}"
+                data-availability="{sizes/availability/@status}" 
                 /> 
-                <input name="size" type="hidden" value="{sizes/size[availability/@status != 'disable'][1]/@type}" />
+                <input name="size" type="hidden" value="{sizes/size[availability/@status != 'disable']/@type}" />
                 <div class="add_to_basket__number_wrapper">
                     <select class="add_to_basket__number f-select" tabindex="-1">
                 				<option>
@@ -68,4 +66,3 @@
             </a>
         </iaixsl:otherwise>
     </iaixsl:choose>
-</div>
