@@ -63,7 +63,7 @@ function ProductBuy(selector) {
   };
 
   this.productBuy = () => {
-    const productBuySectionsArr = Array.from(document.querySelectorAll('.product_buy_section:not(.--updated):not(.--link)'));
+    const productBuySectionsArr = Array.from(document.querySelectorAll(`${this.selector} .product__buy_section:not(.--updated):not(.--link)`));
 
     const productBuySections = productBuySectionsArr.map((section) => {
       const addButton = section.querySelector('.product_buy__button:not(.--updated)');

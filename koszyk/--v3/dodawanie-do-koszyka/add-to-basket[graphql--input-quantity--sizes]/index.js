@@ -121,7 +121,7 @@ function ProductBuy(selector) {
   };
 
   this.productBuy = () => {
-    const productBuySectionsArr = Array.from(document.querySelectorAll('.product__buy_section:not(.--updated):not(.--link)'));
+    const productBuySectionsArr = Array.from(document.querySelectorAll(`${this.selector} .product__buy_section:not(.--updated):not(.--link)`));
 
     const productBuySections = productBuySectionsArr.map((section) => {
       const submitButton = section.querySelector('.product__buy_button:not(.--updated)');
