@@ -1,0 +1,68 @@
+
+    <iaixsl:choose>
+      <iaixsl:when test="(@product_type = 'product_item' or @product_type = 'virtual') and not(sizes[size/@type != 'uniw']) and (not(sizes/prices/@minprice_net = 0) or not(sizes/prices/@minprice = 0))">
+            <form class="add_to_basket product_buy_section" action="/basketchange.php" method="post"                
+                data-product-type="{@product_type}">
+                <iaixsl:attribute name="class"><![CDATA[add_to_basket]]>
+                        <iaixsl:if test="not(sizes/size[availability/@status != 'disable'])"><![CDATA[ --disabled]]></iaixsl:if>
+                        <iaixsl:if test="@product_type = 'virtual'"><![CDATA[ --virtual]]></iaixsl:if>
+                </iaixsl:attribute>
+                <input name="mode" type="hidden" value="1" />
+                <input name="product" type="hidden" 
+                value="{@id}" 
+                data-sellby="{sizes/@unit_sellby}" 
+                data-id="{@id}" 
+                data-amount="{sizes/size/@amount}" 
+                data-size="{sizes/size[availability/@status != 'disable']/@type}"
+                data-unit="{sizes/@unit}" 
+                data-singular="{sizes/@unit_single}" 
+                data-plural="{/sizes/@unit_plural}" 
+                data-unit_precision="{sizes/@unit_precision}"
+                data-availability="{sizes/availability/@status}" 
+                /> 
+                <input name="size" type="hidden" value="{sizes/size[availability/@status != 'disable']/@type}" />
+                <div class="add_to_basket__number_wrapper">
+                    <select class="add_to_basket__number f-select" tabindex="-1">
+                				<option>
+                					<iaixsl:attribute name="value"><iaixsl:value-of select="1"/></iaixsl:attribute>
+                					<iaixsl:value-of select="1"/>
+                				</option>
+                				<option>
+                					<iaixsl:attribute name="value"><iaixsl:value-of select="2"/></iaixsl:attribute>
+                					<iaixsl:value-of select="2"/>
+                				</option>
+                				<option>
+                					<iaixsl:attribute name="value"><iaixsl:value-of select="3"/></iaixsl:attribute>
+                					<iaixsl:value-of select="3"/>
+                				</option>
+                				<option>
+                					<iaixsl:attribute name="value"><iaixsl:value-of select="4"/></iaixsl:attribute>
+                					<iaixsl:value-of select="4"/>
+                				</option>
+                				<option>
+                					<iaixsl:attribute name="value"><iaixsl:value-of select="5"/></iaixsl:attribute>
+                					<iaixsl:value-of select="5"/>
+                				</option>
+                        <option data-more="true">
+                            <iai:variable vid="więcej"/>
+                        </option>
+                    </select>
+                    <div class="add_to_basket__more">
+                        <input class="add_to_basket__more_input" name="number" type="number" tabindex="-1" value="1" />
+                    </div>
+                </div>
+                <button class="btn --solid --medium add_to_basket__button" tabindex="-1" data-id="{@id}">
+                    <iaixsl:attribute name="data-success"><iai:variable vid="Dodany"/></iaixsl:attribute>
+                    <iaixsl:attribute name="data-error"><iai:variable vid="Wystąpił błąd"/></iaixsl:attribute>
+                    <iaixsl:attribute name="data-text"><iai:variable vid="Do koszyka"/></iaixsl:attribute>
+                    <span><iai:variable vid="Do koszyka"/></span>
+                </button>
+            </form>
+        </iaixsl:when>
+        <iaixsl:otherwise>
+            <a class="btn --solid --medium add_to_basket__link" tabindex="-1" href="{@link}">
+                <iaixsl:attribute name="title"><iai:variable vid="Więcej opcji"/></iaixsl:attribute>
+                <iai:variable vid="Więcej opcji"/>
+            </a>
+        </iaixsl:otherwise>
+    </iaixsl:choose>
