@@ -1,11 +1,11 @@
 
     <iaixsl:choose>
-      <iaixsl:when test="(@product_type = 'product_item' or @product_type = 'virtual') and not(sizes[size/@type != 'uniw']) and (not(sizes/prices/@minprice_net = 0) or not(sizes/prices/@minprice = 0))">
+      <iaixsl:when test="(@product_type = 'product_item' or @product_type = 'product_virtual') and not(sizes[size/@type != 'uniw']) and (not(sizes/prices/@minprice_net = 0) or not(sizes/prices/@minprice = 0))">
             <form class="add_to_basket product_buy_section" action="/basketchange.php" method="post"                
                 data-product-type="{@product_type}">
                 <iaixsl:attribute name="class"><![CDATA[add_to_basket]]>
                         <iaixsl:if test="not(sizes/size[availability/@status != 'disable'])"><![CDATA[ --disabled]]></iaixsl:if>
-                        <iaixsl:if test="@product_type = 'virtual'"><![CDATA[ --virtual]]></iaixsl:if>
+                        <iaixsl:if test="@product_type = 'product_virtual'"><![CDATA[ --virtual]]></iaixsl:if>
                 </iaixsl:attribute>
                 <input name="mode" type="hidden" value="1" />
                 <input name="product" type="hidden" 
