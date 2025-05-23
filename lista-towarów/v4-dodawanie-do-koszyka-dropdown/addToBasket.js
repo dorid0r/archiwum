@@ -25,7 +25,7 @@ class ProductListAddToBasketPlugin extends HotspotAddToBasketPlugin {
         for (const input of inputs) {
               const {id, size, availability, amount, sellby, singular, plural, unitPrecision } = input.dataset;
               result.push({
-                          id,
+                          id: parseInt(id),
                           type: 'product',
                           sizes: [{
                               size,
