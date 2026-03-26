@@ -1,0 +1,190 @@
+.newsletter {
+    padding: 3rem 0;
+
+    @media @tablet {
+        padding: 4rem 0;
+    }
+
+    @media @laptop {
+        padding: 5.5rem 0;
+    }
+
+    &.--dark {
+        position: relative;
+        color: #fff;
+        border-bottom: 1px solid @less_iaicolorscheme_background_border_color;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            bottom: -1px;
+            width: 100vw;
+            transform: translateX(-50%);
+            background: @text_color;
+            z-index: -1;
+        }
+
+        .big_label {
+            color: #fff;
+        }
+
+        .newsletter__input .f-control:focus, .newsletter__input .f-control.focused {
+            &+.f-label{
+                display: none;
+            }
+        }
+
+        .newsletter__checkbox .f-control:checked + .f-label::before, .newsletter__checkbox .f-control.checked + .f-label::before {
+            background-color: @primary_color;
+        }
+
+        .mailing_policy__label {
+            span, a {
+                color: #fff;
+            }
+
+            a:hover {
+                color: @primary_color;
+            }
+        }
+
+        .newsletter__checkbox.--error label {
+            span, a {
+                color: @less_iaicolorscheme_danger_color;
+            }
+        }
+
+        .newsletter__btn .btn:hover {
+            color: #fff;
+            background-color: transparent;
+            border-color: #fff;
+        }
+    }
+
+    &__form {
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "head"
+        "input"
+        "checkbox"
+        "button";
+
+        @media @tablet {
+            grid-template-columns: 1fr 15rem;
+            grid-template-areas:
+            "head head"
+            "input button"
+            "checkbox checkbox";
+        }
+
+        @media @laptop {
+            grid-template-columns: 1fr 40rem 15rem;
+            grid-template-areas:
+            "head input button"
+            "head checkbox checkbox";
+        }
+    }
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        grid-area: head;
+
+        label {
+            text-transform: uppercase;
+            margin-bottom: 0;
+            border-left: 0;
+            padding-left: 0;
+            padding-top: 0;
+            justify-content: center;
+            text-align: center;
+
+            @media @tablet {
+                padding-bottom: 1.5rem;
+                justify-content: flex-start;
+                text-align: left;
+            }
+        }
+
+        span {
+            font-size: 1.4rem;
+            text-align: center;
+
+            @media @tablet {
+                font-size: 1.5rem;
+                text-align: left;
+            }
+        }
+    }
+
+    &__input {
+        order: 2;
+        position: relative;
+        grid-area: input;
+
+        &.f-group {
+            margin-bottom: 0;
+        }
+
+        .f-label {
+            font-size: 1.2rem;
+            top: 1.2rem;
+        }
+
+        .f-control.f-control {
+            height: 4rem;
+        }
+
+        .help-block {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__btn {
+        grid-area: button;
+
+        button {
+            width: 100%;
+        }
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        grid-area: checkbox;
+
+        label::before {
+            transform: unset !important;
+            top: 1px !important;
+        }
+
+        label::after {
+            transform: rotate(45deg) !important;
+            top: 3px !important;
+        }
+
+        span {
+            font-size: 1.2rem;
+        }
+
+        input {
+            margin-right: 1.5rem;
+        }
+
+        &.--error {
+            .mailing_policy__label span, .mailing_policy__label a {
+                color: @less_iaicolorscheme_danger_color;
+            }
+        }
+    }
+
+    #mailing_policy+.mailing_policy__label {
+        text-wrap: initial;
+    }
+}
